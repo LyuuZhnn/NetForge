@@ -1,0 +1,75 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#07111f,#0b1f3d,#051321);
+background-size:400% 400%;
+animation:bg 12s infinite ease;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.login-container{
+width:380px;
+padding:35px;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 0 30px rgba(0,255,255,.25);
+text-align:center;
+}
+
+.login-container h1{
+color:#00e5ff;
+margin-bottom:10px;
+font-size:36px;
+}
+
+.login-container p{
+color:#ddd;
+margin-bottom:25px;
+}
+
+input,
+select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:12px;
+background:#102544;
+color:#fff;
+outline:none;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:12px;
+background:#00e5ff;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00e5ff;
+}
