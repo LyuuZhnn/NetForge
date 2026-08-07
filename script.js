@@ -1173,3 +1173,35 @@ result.innerHTML=
 }
 
 
+function runTraceroute(){
+
+const host=document.getElementById("traceHost").value.trim();
+const result=document.getElementById("traceResult");
+
+if(host===""){
+
+result.innerHTML="Masukkan host.";
+return;
+
+}
+
+let output="";
+
+for(let i=1;i<=8;i++){
+
+output+=
+i+
+". 192.168."+i+"."+rand(1,254)+
+" - "+
+rand(2,40)+
+" ms<br>";
+
+}
+
+output+="<br>Destination : "+host+" ✅";
+
+result.innerHTML=output;
+
+}
+
+
