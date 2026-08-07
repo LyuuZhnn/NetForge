@@ -1411,6 +1411,10 @@ result.innerHTML=html;
 
 let devices=[];
 
+let selectedDevice = null;
+let offsetX = 0;
+let offsetY = 0;
+
 function addDevice(type){
 
 devices.push({
@@ -1432,3 +1436,90 @@ devices=[];
 drawInteractive();
 
 }
+
+const canvas=document.getElementById("topologyCanvas");
+
+if(canvas){
+
+canvas.addEventListener("mousedown",startDrag);
+canvas.addEventListener("mousemove",dragDevice);
+canvas.addEventListener("mouseup",stopDrag);
+canvas.addEventListener("mouseleave",stopDrag);
+
+}
+
+function startDrag(e){
+
+const rect=canvas.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+devices.forEach(device=>{
+
+const dx=x-device.x;
+const dy=y-device.y;
+
+if(Math.sqrt(dx*dx+dy*dy)<30){
+
+selectedDevice=device;
+
+offsetX=dx;
+offsetY=dy;
+
+}
+
+});
+
+}
+
+function dragDevice(e){
+
+if(!selectedDevice) return;
+
+const rect=canvas.getBoundingClientRect();
+
+selectedDevice.x=e.clientX-rect.left-offsetX;
+selectedDevice.y=e.clientY-rect.top-offsetY;
+
+drawInteractive();
+
+}
+
+function stopDrag(){
+
+selectedDevice=null;
+
+}
+
+if(canvas){
+
+canvas.addEventListener("touchstart",e=>{
+
+const t=e.touches[0];
+
+startDrag({
+clientX:t.clientX,
+clientY:t.clientY
+});
+
+});
+
+canvas.addEventListener("touchmove",e=>{
+
+const t=e.touches[0];
+
+dragDevice({
+clientX:t.clientX,
+clientY:t.clientY
+});
+
+e.preventDefault();
+
+});
+
+canvas.addEventListener("touchend",stopDrag);
+
+}
+
+
