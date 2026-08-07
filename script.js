@@ -1096,3 +1096,22 @@ console.log("Status : READY");
 notify("🚀 NetForge Siap Digunakan");
 
 
+function calculateIPv6(){
+
+const input=document.getElementById("ipv6Input").value.trim();
+const result=document.getElementById("ipv6Result");
+
+if(input===""){
+result.innerHTML="Masukkan alamat IPv6";
+return;
+}
+
+const data=input.split("/");
+
+result.innerHTML=
+"IPv6 : "+data[0]+
+"<br>Prefix : /"+(data[1]||64);
+
+}
+
+
