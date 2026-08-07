@@ -1308,6 +1308,7 @@ line(650,220,780,360);
 
 
 window.addEventListener("load",drawTopology);
+drawInteractive();
 
 function whoisLookup(){
 
@@ -1408,3 +1409,26 @@ result.innerHTML=html;
 }
 
 
+let devices=[];
+
+function addDevice(type){
+
+devices.push({
+
+type:type,
+x:80+Math.random()*650,
+y:80+Math.random()*250
+
+});
+
+drawInteractive();
+
+}
+
+function clearTopology(){
+
+devices=[];
+
+drawInteractive();
+
+}
