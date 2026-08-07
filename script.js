@@ -1687,3 +1687,54 @@ link.href=canvas.toDataURL("image/png");
 link.click();
 
 }
+
+function loginNetForge(){
+
+const name=document
+.getElementById("username")
+.value.trim();
+
+if(name===""){
+alert("Masukkan nama!");
+return;
+}
+
+localStorage.setItem(
+"netforge_user",
+name
+);
+
+showUser();
+
+}
+
+function showUser(){
+
+const user=
+localStorage.getItem("netforge_user");
+
+const modal=
+document.getElementById("loginModal");
+
+const welcome=
+document.getElementById("welcomeUser");
+
+if(user){
+
+modal.style.display="none";
+
+welcome.innerHTML=
+"👋 Welcome, <b>"+user+"</b>";
+
+}else{
+
+modal.style.display="flex";
+
+}
+
+}
+
+window.addEventListener(
+"load",
+showUser
+);
