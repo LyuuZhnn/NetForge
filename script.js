@@ -1250,3 +1250,61 @@ pdf.save("NetForge-Report.pdf");
 }
 
 
+function drawTopology(){
+
+const canvas=document.getElementById("topologyCanvas");
+
+if(!canvas) return;
+
+const ctx=canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+function node(x,y,text,color){
+
+ctx.beginPath();
+ctx.arc(x,y,30,0,Math.PI*2);
+ctx.fillStyle=color;
+ctx.fill();
+
+ctx.fillStyle="white";
+ctx.font="14px Poppins";
+ctx.textAlign="center";
+ctx.fillText(text,x,y+5);
+
+}
+
+function line(x1,y1,x2,y2){
+
+ctx.beginPath();
+ctx.moveTo(x1,y1);
+ctx.lineTo(x2,y2);
+ctx.strokeStyle="#00e5ff";
+ctx.lineWidth=3;
+ctx.stroke();
+
+}
+
+node(450,80,"Router","#ff9800");
+
+node(250,220,"Switch","#00e5ff");
+node(650,220,"Server","#4caf50");
+
+node(120,360,"PC-1","#2196f3");
+node(300,360,"PC-2","#2196f3");
+node(600,360,"Laptop","#9c27b0");
+node(780,360,"Printer","#f44336");
+
+line(450,80,250,220);
+line(450,80,650,220);
+
+line(250,220,120,360);
+line(250,220,300,360);
+
+line(650,220,600,360);
+line(650,220,780,360);
+
+}
+
+
+window.addEventListener("load",drawTopology);

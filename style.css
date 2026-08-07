@@ -481,3 +481,11 @@ color:#111;
 }
 
 
+#topologyCanvas{
+
+width:100%;
+background:#081726;
+border-radius:15px;
+border:1px solid rgba(255,255,255,.15);
+
+}
