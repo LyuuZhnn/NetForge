@@ -1361,3 +1361,50 @@ result.innerHTML=`
 }
 
 
+function scanPorts(){
+
+const ip=document.getElementById("scanIP").value.trim();
+const result=document.getElementById("scanPortResult");
+
+if(ip===""){
+
+result.innerHTML="Masukkan alamat IP.";
+return;
+
+}
+
+const ports=[
+21,
+22,
+23,
+25,
+53,
+80,
+110,
+135,
+139,
+143,
+443,
+445,
+3306,
+3389,
+8080
+];
+
+let html="<b>Target :</b> "+ip+"<br><br>";
+
+ports.forEach(port=>{
+
+const status=Math.random()>0.5
+?"🟢 OPEN"
+:"🔴 CLOSED";
+
+html+="Port "+port+" : "+status+"<br>";
+
+});
+
+result.innerHTML=html;
+
+}
+
+
