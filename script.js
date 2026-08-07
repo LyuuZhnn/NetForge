@@ -1307,8 +1307,13 @@ line(650,220,780,360);
 }
 
 
-window.addEventListener("load",drawTopology);
-drawInteractive();
+window.addEventListener("load",()=>{
+
+drawTopology();
+
+loadTopology();
+
+});
 
 function whoisLookup(){
 
@@ -1411,6 +1416,10 @@ result.innerHTML=html;
 
 let devices=[];
 
+let connections=[];
+let connectMode=false;
+let firstDevice=null;
+
 let selectedDevice = null;
 let offsetX = 0;
 let offsetY = 0;
@@ -1463,6 +1472,28 @@ const dy=y-device.y;
 if(Math.sqrt(dx*dx+dy*dy)<30){
 
 selectedDevice=device;
+if(connectMode){
+
+if(!firstDevice){
+
+firstDevice=device;
+
+}else{
+
+connections.push({
+from:firstDevice,
+to:device
+});
+
+firstDevice=null;
+
+drawInteractive();
+
+}
+
+return;
+
+}
 
 offsetX=dx;
 offsetY=dy;
@@ -1522,4 +1553,123 @@ canvas.addEventListener("touchend",stopDrag);
 
 }
 
+function drawInteractive(){
 
+const canvas=document.getElementById("topologyCanvas");
+
+if(!canvas) return;
+
+const ctx=canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+// Gambar koneksi
+connections.forEach(c=>{
+
+ctx.beginPath();
+
+ctx.moveTo(c.from.x,c.from.y);
+
+ctx.lineTo(c.to.x,c.to.y);
+
+ctx.strokeStyle="#00e5ff";
+ctx.lineWidth=3;
+ctx.stroke();
+
+});
+
+// Gambar device
+devices.forEach(d=>{
+
+ctx.beginPath();
+
+ctx.arc(d.x,d.y,28,0,Math.PI*2);
+
+switch(d.type){
+
+case "router":
+ctx.fillStyle="#ff9800";
+break;
+
+case "switch":
+ctx.fillStyle="#00e5ff";
+break;
+
+case "server":
+ctx.fillStyle="#4caf50";
+break;
+
+default:
+ctx.fillStyle="#2196f3";
+
+}
+
+ctx.fill();
+
+ctx.fillStyle="#fff";
+ctx.font="13px Arial";
+ctx.textAlign="center";
+ctx.fillText(d.type.toUpperCase(),d.x,d.y+5);
+
+});
+
+}
+
+function toggleConnectMode(){
+
+connectMode=!connectMode;
+
+alert(
+connectMode
+?"Connect Mode Aktif"
+:"Connect Mode Nonaktif"
+);
+
+}
+
+function saveTopology(){
+
+localStorage.setItem(
+"netforge_devices",
+JSON.stringify(devices)
+);
+
+localStorage.setItem(
+"netforge_connections",
+JSON.stringify(connections)
+);
+
+alert("Topology berhasil disimpan!");
+
+}
+
+function loadTopology(){
+
+const d=localStorage.getItem("netforge_devices");
+const c=localStorage.getItem("netforge_connections");
+
+if(d){
+
+devices=JSON.parse(d);
+
+}else{
+
+devices=[];
+
+}
+
+if(c){
+
+connections=JSON.parse(c);
+
+}else{
+
+connections=[];
+
+}
+
+drawInteractive();
+
+alert("Topology berhasil dimuat!");
+
+}
