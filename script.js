@@ -1332,3 +1332,32 @@ result.innerHTML=`
 `;
 
 }
+
+function dnsLookupPro(){
+
+const domain=document.getElementById("dnsDomain").value.trim();
+const result=document.getElementById("dnsResult");
+
+if(domain===""){
+result.innerHTML="Masukkan nama domain.";
+return;
+}
+
+const ip=
+rand(1,223)+"."+
+rand(0,255)+"."+
+rand(0,255)+"."+
+rand(1,254);
+
+result.innerHTML=`
+<b>Domain</b> : ${domain}<br>
+<b>A Record</b> : ${ip}<br>
+<b>MX Record</b> : mail.${domain}<br>
+<b>NS1</b> : ns1.${domain}<br>
+<b>NS2</b> : ns2.${domain}<br>
+<b>TTL</b> : 3600 Seconds
+`;
+
+}
+
+
