@@ -1673,3 +1673,17 @@ drawInteractive();
 alert("Topology berhasil dimuat!");
 
 }
+
+function exportTopology(){
+
+const canvas=document.getElementById("topologyCanvas");
+
+const link=document.createElement("a");
+
+link.download="NetForge-Topology.png";
+
+link.href=canvas.toDataURL("image/png");
+
+link.click();
+
+}
