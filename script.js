@@ -1228,3 +1228,25 @@ document.body.classList.add("light");
 };
 
 
+async function exportPDF(){
+
+const { jsPDF } = window.jspdf;
+
+const pdf=new jsPDF();
+
+pdf.setFontSize(20);
+pdf.text("NetForge Report",20,20);
+
+pdf.setFontSize(12);
+
+pdf.text("CPU : "+document.getElementById("cpu").innerText,20,40);
+pdf.text("RAM : "+document.getElementById("ram").innerText,20,50);
+pdf.text("Ping : "+document.getElementById("ping").innerText,20,60);
+pdf.text("Uptime : "+document.getElementById("uptime").innerText,20,70);
+pdf.text("Status : "+document.getElementById("serverStatus").innerText,20,80);
+
+pdf.save("NetForge-Report.pdf");
+
+}
+
+
