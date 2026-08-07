@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NetForge Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h1>🌐 NetForge</h1>
+
+<a href="#dashboard">🏠 Dashboard</a>
+
+<a href="#monitor">📊 Monitor</a>
+
+<a href="#tools">🌐 Networking Tools</a>
+
+<a href="#terminal-section">💻 Terminal</a>
+
+<a href="#about">ℹ️ About</a>
+
+<button onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+<div class="main">
+
+<section id="dashboard">
+
+<h1>Dashboard</h1>
+
+<h2 id="welcomeName">Welcome</h2>
+
+<p id="welcomeClass"></p>
+
+<p id="welcomeRole"></p>
+
+<div id="clock">00:00:00</div>
+
+<div id="today"></div>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>CPU Usage</h3>
+
+<h1 id="cpu">0%</h1>
+
+</div>
+
+<div class="card">
+
+<h3>RAM Usage</h3>
+
+<h1 id="ram">0%</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Ping</h3>
+
+<h1 id="ping">0 ms</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Online User</h3>
+
+<h1 id="onlineUser">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Uptime</h3>
+
+<h1 id="uptime">00:00:00</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Server Status</h3>
+
+<h1 id="serverStatus">🟢 ONLINE</h1>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="monitor">
+
+<h2>📊 Monitor</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Upload Speed</h3>
+
+<h1 id="uploadSpeed">0 Mbps</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Download Speed</h3>
+
+<h1 id="downloadSpeed">0 Mbps</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Server Load</h3>
+
+<div class="progress">
+
+<div id="serverBar"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<canvas id="liveChart"></canvas>
+
+<br>
+
+<canvas id="trafficChart"></canvas>
+
+</section>
+
+<section id="tools">
+
+<h2>🌐 Networking Tools</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Subnet Calculator</h3>
+
+<input
+id="ipInput"
+placeholder="192.168.1.10">
+
+<input
+id="prefixInput"
+type="number"
+placeholder="24">
+
+<button onclick="calculateSubnet()">
+
+Hitung
+
+</button>
+
+<div
+id="subnetResult"
+class="result">
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>IPv4 Validator</h3>
+
+<input
+id="ipv4Input"
+placeholder="192.168.1.1">
+
+<button onclick="validateIPv4()">
+
+Check
+
+</button>
+
+<div
+id="ipv4Result"
+class="result">
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>IP Class Checker</h3>
+
+<input
+id="classInput"
+placeholder="192.168.1.1">
+
+<button onclick="checkIPClass()">
+
+Check
+
+</button>
+
+<div
+id="classResult"
+class="result">
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>CIDR Converter</h3>
+
+<input
+id="cidrInput"
+placeholder="255.255.255.0">
+
+<button onclick="convertCIDR()">
+
+Convert
+
+</button>
+
+<div
+id="cidrResult"
+class="result">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="tools-more">
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Binary → Decimal</h3>
+
+<input id="binaryInput" placeholder="10101010">
+
+<button onclick="convertBinary()">
+Convert
+</button>
+
+<div id="binaryResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Wildcard Calculator</h3>
+
+<input id="wildcardInput" placeholder="255.255.255.0">
+
+<button onclick="calculateWildcard()">
+Calculate
+</button>
+
+<div id="wildcardResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Host Calculator</h3>
+
+<input id="hostPrefix" type="number" placeholder="/24">
+
+<button onclick="calculateHost()">
+Calculate
+</button>
+
+<div id="hostResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Password Generator</h3>
+
+<button onclick="generatePassword()">
+
+Generate
+
+</button>
+
+<div id="passwordResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Ping Simulator</h3>
+
+<input id="pingHost" placeholder="google.com">
+
+<button onclick="pingHost()">
+
+Ping
+
+</button>
+
+<div id="pingResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>DNS Lookup</h3>
+
+<input id="dnsInput" placeholder="google.com">
+
+<button onclick="dnsLookup()">
+
+Lookup
+
+</button>
+
+<div id="dnsResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Network Scanner</h3>
+
+<button onclick="scanNetwork()">
+
+Scan Network
+
+</button>
+
+<div id="scanResult" class="result"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="terminal-section">
+
+<h2>💻 Linux Terminal</h2>
+
+<div id="terminal"></div>
+
+<input
+id="terminal-input"
+placeholder="Ketik command...">
+
+</section>
+
+<section id="about">
+
+<h2>ℹ️ About</h2>
+
+<div class="card">
+
+<h3>NetForge</h3>
+
+<p>
+
+Network Dashboard & Networking Tools
+
+</p>
+
+<br>
+
+<p>
+
+<b>Developer</b>
+
+<br><br>
+
+MUSYAFFA HANIF SUNNI
+
+<br>
+
+TJKT
+
+<br>
+
+SMKN 1 Adiwerna
+
+</p>
+
+<br>
+
+<p>
+
+Repository:
+
+<br>
+
+<a href="https://github.com/LyuuZhnn/NetForge/" target="_blank">
+
+https://github.com/LyuuZhnn/NetForge/
+
+</a>
+
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -7,7 +7,6 @@ const role=document.getElementById("role").value;
 if(username===""||kelas===""){
 
 alert("Username dan Kelas wajib diisi!");
-
 return;
 
 }
