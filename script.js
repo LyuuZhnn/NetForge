@@ -1308,3 +1308,27 @@ line(650,220,780,360);
 
 
 window.addEventListener("load",drawTopology);
+
+function whoisLookup(){
+
+const domain=document.getElementById("whoisDomain").value.trim();
+const result=document.getElementById("whoisResult");
+
+if(domain===""){
+
+result.innerHTML="Masukkan nama domain.";
+return;
+
+}
+
+result.innerHTML=`
+<b>Domain</b> : ${domain}<br>
+<b>Status</b> : Active<br>
+<b>Registrar</b> : Example Registrar<br>
+<b>Created</b> : 2024-01-15<br>
+<b>Expires</b> : 2027-01-15<br>
+<b>Name Server</b> : ns1.example.net<br>
+<b>Name Server</b> : ns2.example.net
+`;
+
+}
