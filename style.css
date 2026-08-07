@@ -456,3 +456,28 @@ width:100%;
 }
 
 
+body.light{
+background:#eef3f8;
+color:#222;
+}
+
+body.light .sidebar{
+background:#fff;
+}
+
+body.light .card{
+background:#fff;
+color:#222;
+}
+
+body.light input{
+background:#eee;
+color:#111;
+}
+
+body.light .result{
+background:#eee;
+color:#111;
+}
+
+
