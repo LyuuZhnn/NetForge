@@ -1115,3 +1115,61 @@ result.innerHTML=
 }
 
 
+function calculateVLSM(){
+
+const network=document.getElementById("vlsmNetwork").value.trim();
+const host=parseInt(document.getElementById("vlsmHost").value);
+const result=document.getElementById("vlsmResult");
+
+if(network===""||isNaN(host)||host<1){
+
+result.innerHTML="Masukkan network dan jumlah host.";
+return;
+
+}
+
+let bits=0;
+
+while((2**bits-2)<host){
+
+bits++;
+
+}
+
+const prefix=32-bits;
+const total=2**bits;
+const usable=total-2;
+
+result.innerHTML=
+"Network : "+network+
+"<br>Host Dibutuhkan : "+host+
+"<br>CIDR : /"+prefix+
+"<br>Total Address : "+total+
+"<br>Usable Host : "+usable;
+
+}
+
+
+function simulateRouting(){
+
+const dest=document.getElementById("routeDest").value.trim();
+const gateway=document.getElementById("routeGateway").value.trim();
+const result=document.getElementById("routeResult");
+
+if(dest===""||gateway===""){
+
+result.innerHTML="Lengkapi Destination dan Gateway.";
+return;
+
+}
+
+result.innerHTML=
+"Destination : "+dest+
+"<br>Gateway : "+gateway+
+"<br>Interface : eth0"+
+"<br>Metric : 1"+
+"<br>Status : ✅ Route Added (Simulation)";
+
+}
+
+

@@ -33,6 +33,10 @@
 
 <a href="#ipv6">🌐 IPv6 Calculator</a>
 
+<a href="#vlsm">📡 VLSM Calculator</a>
+
+<a href="#routing">🔀 Routing Simulator</a>
+
 <a href="#terminal-section">💻 Terminal</a>
 
 <a href="#about">ℹ️ About</a>
@@ -385,6 +389,50 @@ Calculate
 </button>
 
 <div id="ipv6Result" class="result"></div>
+
+</div>
+
+</section>
+
+<section id="vlsm">
+
+<h2>📡 VLSM Calculator</h2>
+
+<div class="card">
+
+<input id="vlsmNetwork" placeholder="192.168.10.0/24">
+
+<input id="vlsmHost" type="number" placeholder="Jumlah Host">
+
+<button onclick="calculateVLSM()">
+
+Calculate
+
+</button>
+
+<div id="vlsmResult" class="result"></div>
+
+</div>
+
+</section>
+
+<section id="routing">
+
+<h2>🔀 Routing Simulator</h2>
+
+<div class="card">
+
+<input id="routeDest" placeholder="Destination (192.168.2.0/24)">
+
+<input id="routeGateway" placeholder="Gateway (192.168.1.1)">
+
+<button onclick="simulateRouting()">
+
+Simulate
+
+</button>
+
+<div id="routeResult" class="result"></div>
 
 </div>
 
