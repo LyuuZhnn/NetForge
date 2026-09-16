@@ -4721,3 +4721,63 @@ body{
   letter-spacing:1px !important;
 }
 
+
+/* =========================================
+   USER INFO — CLOCK + DATE CLEAN
+   ========================================= */
+
+#dashboard .nf-user-info-block{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  width:100% !important;
+  min-height:0 !important;
+  margin:22px 0 26px !important;
+  padding:0 !important;
+}
+
+#dashboard .nf-user-info-block #welcomeName{
+  margin:0 0 7px !important;
+  font-size:28px !important;
+  line-height:1.2 !important;
+}
+
+#dashboard .nf-user-info-block .nf-user-details{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  margin:0 !important;
+}
+
+#dashboard .nf-user-info-block #clock{
+  display:block !important;
+  margin:13px 0 3px !important;
+  font-size:30px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  color:#00e5ff !important;
+  letter-spacing:1px !important;
+}
+
+#dashboard .nf-user-info-block #today{
+  display:block !important;
+  margin:0 !important;
+  font-size:12px !important;
+  line-height:20px !important;
+  color:#718ba1 !important;
+}
+
+#dashboard > .grid{
+  margin-top:20px !important;
+}
+
+@media(max-width:650px){
+  #dashboard .nf-user-info-block #welcomeName{
+    font-size:24px !important;
+  }
+
+  #dashboard .nf-user-info-block #clock{
+    font-size:27px !important;
+  }
+}
+
