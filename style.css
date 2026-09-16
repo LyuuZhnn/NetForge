@@ -4509,227 +4509,66 @@ body{
 
 
 /* =========================================
-   NETFORGE V3.1 — REMOVE LEGACY DASHBOARD UI
+   NETFORGE V3.1 — USER INFO FINAL
    ========================================= */
 
-/* Legacy welcome block — keep in DOM for JS,
-   but remove from visual dashboard */
-#dashboard > #welcomeName,
-#dashboard > #welcomeClass,
-#dashboard > #welcomeRole,
-#dashboard > #clock,
-#dashboard > #today{
-  display:none !important;
-}
+.nf-user-info-block{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
 
-/* Legacy duplicated overview heading */
-#dashboard > .nf-section-title{
-  display:none !important;
-}
-
-/* Dashboard spacing */
-#dashboard{
-  padding-top:20px !important;
-}
-
-/* Hero directly followed by stats */
-#dashboard .nf-hero{
-  margin-bottom:14px !important;
-}
-
-/* Stats become the primary overview */
-#dashboard > .grid{
-  margin-top:0 !important;
-}
-
-/* Make traffic/dashboard panels visually connected */
-#dashboard .nf-dashboard-panels{
-  margin-top:14px !important;
-}
-
-
-/* =========================================
-   NETFORGE — HIDE OLD DASHBOARD ELEMENTS
-   ========================================= */
-
-/* Hide old V2 welcome information */
-section#dashboard > #welcomeName,
-section#dashboard > #welcomeClass,
-section#dashboard > #welcomeRole,
-section#dashboard > #clock,
-section#dashboard > #today{
-  display:none !important;
-  visibility:hidden !important;
-  height:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-}
-
-/* Hide old overview heading */
-section#dashboard > .nf-section-title{
-  display:none !important;
-}
-
-/* Compact statistics */
-section#dashboard > .grid{
-  margin-top:12px !important;
-  margin-bottom:14px !important;
-}
-
-section#dashboard > .grid > .card{
-  min-height:105px !important;
-  padding:15px !important;
-}
-
-section#dashboard > .grid > .card h1{
-  font-size:22px !important;
-  margin:8px 0 0 !important;
-}
-
-section#dashboard > .grid > .card h3{
-  font-size:9px !important;
-  margin:0 !important;
-}
-
-/* Compact hero */
-section#dashboard > .nf-hero{
-  min-height:140px !important;
-  margin-bottom:12px !important;
-}
-
-/* Keep dashboard dense */
-section#dashboard .nf-reference-panels,
-section#dashboard .nf-lower-dashboard{
-  margin-top:12px !important;
-}
-
-
-/* =========================================
-   NETFORGE — PROFESSIONAL USER INFO
-   ========================================= */
-
-#dashboard > #welcomeName,
-#dashboard > #welcomeClass,
-#dashboard > #welcomeRole,
-#dashboard > #clock,
-#dashboard > #today{
-  display:block !important;
-  visibility:visible !important;
+  width:100% !important;
   height:auto !important;
-}
+  min-height:0 !important;
 
-/* Welcome */
-#dashboard > #welcomeName{
-  margin:18px 0 5px !important;
+  position:static !important;
+  float:none !important;
+  clear:both !important;
+
+  margin:18px 0 20px !important;
   padding:0 !important;
-
-  color:#f7fbff !important;
-  font-size:30px !important;
-  font-weight:750 !important;
-  letter-spacing:-.6px !important;
 }
 
-/* Class */
-#dashboard > #welcomeClass{
-  display:inline-block !important;
-  margin:0 14px 0 0 !important;
-
-  color:#9db5c9 !important;
-  font-size:12px !important;
-}
-
-/* Role */
-#dashboard > #welcomeRole{
-  display:inline-block !important;
-  margin:0 !important;
-
-  color:#9db5c9 !important;
-  font-size:12px !important;
-}
-
-/* Small separation between class and role */
-#dashboard > #welcomeClass::after{
-  content:"";
-  display:inline-block;
-
-  width:5px;
-  height:5px;
-
-  margin-left:14px;
-
-  border-radius:50%;
-  background:#00d9ff;
-  box-shadow:0 0 7px rgba(0,217,255,.5);
-}
-
-/* Clock */
-#dashboard > #clock{
-  margin:17px 0 2px !important;
-
-  color:#00e5ff !important;
-  font-size:32px !important;
-  font-weight:800 !important;
-  line-height:1 !important;
-  letter-spacing:1px !important;
-  font-variant-numeric:tabular-nums;
-}
-
-/* Date */
-#dashboard > #today{
-  margin:7px 0 17px !important;
-
-  color:#718da5 !important;
-  font-size:12px !important;
-  font-weight:500 !important;
-}
-
-/* Keep the stats close to the user info */
-#dashboard > .grid{
-  margin-top:0 !important;
-}
-
-/* Mobile */
-@media(max-width:600px){
-
-  #dashboard > #welcomeName{
-    font-size:25px !important;
-  }
-
-  #dashboard > #clock{
-    font-size:28px !important;
-  }
-
-  #dashboard > #welcomeClass,
-  #dashboard > #welcomeRole,
-  #dashboard > #today{
-    font-size:11px !important;
-  }
-
-}
-
-
-/* =========================================
-   NETFORGE — FINAL WELCOME INFO OVERRIDE
-   ========================================= */
-
-section#dashboard > h2#welcomeName{
+.nf-user-info-block #welcomeName{
   display:block !important;
-  visibility:visible !important;
+  position:static !important;
+  float:none !important;
+  clear:both !important;
 
-  margin:18px 0 4px !important;
+  width:auto !important;
+  height:auto !important;
+
+  margin:0 0 6px !important;
   padding:0 !important;
 
   color:#ffffff !important;
   font-size:28px !important;
   font-weight:800 !important;
-  line-height:1.2 !important;
-  letter-spacing:-.5px !important;
+  line-height:1.25 !important;
+
+  transform:none !important;
 }
 
-section#dashboard > p#welcomeClass,
-section#dashboard > p#welcomeRole{
-  display:inline-block !important;
-  visibility:visible !important;
+.nf-user-details{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+
+  width:auto !important;
+  height:auto !important;
+
+  position:static !important;
+  float:none !important;
+
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.nf-user-details #welcomeClass,
+.nf-user-details #welcomeRole{
+  display:inline !important;
+  position:static !important;
+  float:none !important;
 
   width:auto !important;
   height:auto !important;
@@ -4737,171 +4576,135 @@ section#dashboard > p#welcomeRole{
   margin:0 !important;
   padding:0 !important;
 
-  color:#9eb4c7 !important;
+  color:#9fb5c7 !important;
   font-size:12px !important;
   line-height:20px !important;
 }
 
-section#dashboard > p#welcomeClass{
-  margin-right:16px !important;
+.nf-detail-dot{
+  display:inline !important;
+  margin:0 10px !important;
+  color:#00d9ff !important;
 }
 
-section#dashboard > div#clock{
+.nf-user-info-block #clock{
   display:block !important;
-  visibility:visible !important;
+  position:static !important;
+  float:none !important;
+  clear:both !important;
 
-  margin:15px 0 3px !important;
+  width:auto !important;
+  height:auto !important;
+
+  margin:14px 0 3px !important;
   padding:0 !important;
 
-  color:#00d9ff !important;
+  color:#00e5ff !important;
   font-size:32px !important;
   font-weight:800 !important;
-  line-height:1 !important;
+  line-height:1.15 !important;
+  letter-spacing:1px !important;
 
-  font-variant-numeric:tabular-nums !important;
+  transform:none !important;
 }
 
-section#dashboard > div#today{
+.nf-user-info-block #today{
   display:block !important;
-  visibility:visible !important;
+  position:static !important;
+  float:none !important;
+  clear:both !important;
 
-  margin:7px 0 16px !important;
+  width:auto !important;
+  height:auto !important;
+
+  margin:0 !important;
   padding:0 !important;
 
-  color:#6f8ba2 !important;
+  color:#718ba1 !important;
   font-size:12px !important;
-  line-height:18px !important;
+  line-height:20px !important;
+
+  transform:none !important;
 }
 
-/* separator between class and role */
-section#dashboard > p#welcomeClass::after{
-  content:"";
-  display:inline-block;
-
-  width:5px;
-  height:5px;
-
-  margin:0 0 2px 16px;
-
-  border-radius:50%;
-  background:#00d9ff;
-}
-
-/* MOBILE */
 @media(max-width:600px){
-
-  section#dashboard > h2#welcomeName{
+  .nf-user-info-block #welcomeName{
     font-size:24px !important;
   }
 
-  section#dashboard > div#clock{
+  .nf-user-info-block #clock{
     font-size:28px !important;
   }
-
 }
-
-
 
 /* =========================================
-   FIX — DASHBOARD WELCOME STACK
+   HARD FIX — USER INFO OVERLAP
    ========================================= */
 
-section#dashboard > #welcomeName{
-    display:block !important;
-    position:relative !important;
+#dashboard .nf-user-info-block{
+  position:relative !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:140px !important;
+  margin:24px 0 24px !important;
+  padding:0 !important;
+  overflow:visible !important;
+  z-index:2 !important;
+}
 
-    width:100% !important;
-    height:auto !important;
+#dashboard .nf-user-info-block #welcomeName{
+  position:static !important;
+  display:block !important;
+  margin:0 0 8px !important;
+  padding:0 !important;
+  line-height:1.25 !important;
+}
 
-    margin:22px 0 8px !important;
-    padding:0 !important;
+#dashboard .nf-user-info-block .nf-user-details{
+  position:static !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  margin:0 !important;
+  padding:0 !important;
+}
 
-    color:#ffffff !important;
+#dashboard .nf-user-info-block #clock{
+  position:static !important;
+  display:block !important;
+  margin:14px 0 4px !important;
+  padding:0 !important;
+  line-height:1.15 !important;
+  transform:none !important;
+}
+
+#dashboard .nf-user-info-block #today{
+  position:static !important;
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:20px !important;
+  transform:none !important;
+}
+
+#dashboard > .grid{
+  position:relative !important;
+  clear:both !important;
+  margin-top:24px !important;
+  z-index:1 !important;
+}
+
+@media(max-width:650px){
+  #dashboard .nf-user-info-block{
+    min-height:150px !important;
+    margin-bottom:20px !important;
+  }
+
+  #dashboard .nf-user-info-block #clock{
     font-size:28px !important;
-    font-weight:800 !important;
-    line-height:1.25 !important;
-}
-
-section#dashboard > #welcomeClass,
-section#dashboard > #welcomeRole{
-    display:inline-block !important;
-    position:relative !important;
-
-    width:auto !important;
-    height:auto !important;
-
-    margin:0 !important;
-    padding:0 !important;
-
-    color:#9fb5c7 !important;
-    font-size:12px !important;
-    line-height:20px !important;
-}
-
-section#dashboard > #welcomeClass{
-    margin-right:18px !important;
-}
-
-section#dashboard > #welcomeClass::after{
-    content:"";
-    display:inline-block;
-
-    width:5px;
-    height:5px;
-
-    margin-left:14px;
-    margin-bottom:1px;
-
-    border-radius:50%;
-    background:#00d9ff;
-}
-
-section#dashboard > #clock{
-    display:block !important;
-    position:relative !important;
-
-    width:100% !important;
-    height:auto !important;
-
-    margin:18px 0 5px !important;
-    padding:0 !important;
-
-    color:#00e5ff !important;
-    font-size:32px !important;
-    font-weight:800 !important;
-    line-height:1.15 !important;
-    letter-spacing:1px !important;
-
-    font-variant-numeric:tabular-nums !important;
-}
-
-section#dashboard > #today{
-    display:block !important;
-    position:relative !important;
-
-    width:100% !important;
-    height:auto !important;
-
-    margin:0 0 20px !important;
-    padding:0 !important;
-
-    color:#718ba1 !important;
-    font-size:12px !important;
-    line-height:20px !important;
-}
-
-section#dashboard > .grid{
-    clear:both !important;
-}
-
-@media(max-width:600px){
-
-    section#dashboard > #welcomeName{
-        font-size:24px !important;
-    }
-
-    section#dashboard > #clock{
-        font-size:28px !important;
-    }
-
+  }
 }
