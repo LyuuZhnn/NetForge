@@ -1807,9 +1807,25 @@ if(profileUser) profileUser.textContent=user;
 }
 
 function openSettings(){
+const modal=document.getElementById("settingsModal");
 
-alert("Settings NetForge akan tersedia di V3.1.");
+if(!modal) return;
 
+modal.classList.add("show");
+
+const dropdown=document.getElementById("profileDropdown");
+
+if(dropdown){
+dropdown.classList.remove("show");
+}
+}
+
+function closeSettings(){
+const modal=document.getElementById("settingsModal");
+
+if(modal){
+modal.classList.remove("show");
+}
 }
 
 window.addEventListener("load",updateProfile);

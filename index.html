@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -143,7 +144,6 @@
       Settings
     </button>
 
-    <button onclick="logoutNetForge()">
       <i class="fa-solid fa-right-from-bracket"></i>
       Logout
     </button>
@@ -303,6 +303,106 @@
 <h1 id="serverStatus">🟢 ONLINE</h1>
 
 </div>
+
+</div>
+
+<div class="nf-dashboard-panels">
+
+  <div class="nf-panel">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>NETWORK ACTIVITY</small>
+        <h2>System Activity</h2>
+      </div>
+
+      <span class="nf-panel-live">
+        <i class="fa-solid fa-circle"></i>
+        LIVE
+      </span>
+    </div>
+
+    <div class="nf-activity-list">
+
+      <div class="nf-activity-item">
+        <span class="nf-activity-icon">
+          <i class="fa-solid fa-server"></i>
+        </span>
+        <div>
+          <strong>Server Online</strong>
+          <small>NetForge server is running</small>
+        </div>
+        <span class="nf-activity-status">OK</span>
+      </div>
+
+      <div class="nf-activity-item">
+        <span class="nf-activity-icon">
+          <i class="fa-solid fa-diagram-project"></i>
+        </span>
+        <div>
+          <strong>Topology Ready</strong>
+          <small>Network topology module ready</small>
+        </div>
+        <span class="nf-activity-status">READY</span>
+      </div>
+
+      <div class="nf-activity-item">
+        <span class="nf-activity-icon">
+          <i class="fa-solid fa-terminal"></i>
+        </span>
+        <div>
+          <strong>Terminal Ready</strong>
+          <small>Network command simulator ready</small>
+        </div>
+        <span class="nf-activity-status">READY</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="nf-panel">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>QUICK ACTIONS</small>
+        <h2>Network Tools</h2>
+      </div>
+    </div>
+
+    <div class="nf-quick-actions">
+
+      <a href="#tools">
+        <i class="fa-solid fa-network-wired"></i>
+        <span>
+          <strong>Networking Tools</strong>
+          <small>Subnet & network calculator</small>
+        </span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+      <a href="#topology">
+        <i class="fa-solid fa-sitemap"></i>
+        <span>
+          <strong>Network Topology</strong>
+          <small>Build network topology</small>
+        </span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+      <a href="#terminal-section">
+        <i class="fa-solid fa-terminal"></i>
+        <span>
+          <strong>Terminal</strong>
+          <small>Network CLI simulator</small>
+        </span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -864,6 +964,71 @@ https://github.com/LyuuZhnn/NetForge/
 <script src="script.js"></script>
 
 <div id="toastContainer"></div>
+
+<!-- NETFORGE SETTINGS MODAL -->
+
+<div id="settingsModal" class="nf-modal">
+
+  <div class="nf-settings">
+
+    <div class="nf-settings-header">
+      <div>
+        <small>NETFORGE CONFIGURATION</small>
+        <h2>Settings</h2>
+      </div>
+
+      <button class="nf-modal-close" onclick="closeSettings()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="nf-settings-body">
+
+      <div class="nf-setting-item">
+        <div>
+          <strong>Theme</strong>
+          <small>Switch dashboard appearance</small>
+        </div>
+
+        <button onclick="toggleTheme(); showToast('Theme updated')">
+          <i class="fa-solid fa-moon"></i>
+          Toggle
+        </button>
+      </div>
+
+      <div class="nf-setting-item">
+        <div>
+          <strong>Sidebar</strong>
+          <small>Collapse or expand navigation</small>
+        </div>
+
+        <button onclick="toggleSidebar(); showToast('Sidebar updated')">
+          <i class="fa-solid fa-bars"></i>
+          Toggle
+        </button>
+      </div>
+
+      <div class="nf-setting-item">
+        <div>
+          <strong>Topology</strong>
+          <small>Clear current network topology</small>
+        </div>
+
+        <button class="danger" onclick="clearTopology(); showToast('Topology cleared','error')">
+          <i class="fa-solid fa-trash"></i>
+          Clear
+        </button>
+      </div>
+
+    </div>
+
+    <div class="nf-settings-footer">
+      <button onclick="closeSettings()">Close</button>
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 
