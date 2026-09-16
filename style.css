@@ -2301,3 +2301,14 @@ textarea:focus{
   }
 
 }
+
+/* ===== NETFORGE CINEMATIC BACKGROUND ===== */
+body{
+  background:
+    linear-gradient(
+      rgba(2,9,20,.58),
+      rgba(2,9,20,.72)
+    ),
+    url("Background.png") center center / cover fixed no-repeat;
+  background-color:#020914;
+}
