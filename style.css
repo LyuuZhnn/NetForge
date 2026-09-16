@@ -4886,3 +4886,51 @@ body{
   }
 }
 
+
+/* USER INFO CLEAN — SAFE */
+#dashboard .nf-user-info-block{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  margin:18px 0 28px !important;
+  padding:0 !important;
+}
+
+#dashboard .nf-user-details{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+#dashboard .nf-user-details #welcomeRole,
+#dashboard .nf-user-details #welcomeClass{
+  display:inline !important;
+  margin:0 !important;
+  color:#a9bac8 !important;
+  font-size:13px !important;
+  font-weight:500 !important;
+}
+
+#dashboard .nf-user-details .nf-detail-dot{
+  display:inline !important;
+  margin:0 9px !important;
+  color:#00d9ff !important;
+}
+
+#dashboard .nf-user-info-block #clock{
+  display:block !important;
+  margin:12px 0 2px !important;
+  color:#00e5ff !important;
+  font-size:30px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  letter-spacing:1px !important;
+}
+
+#
+
