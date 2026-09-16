@@ -35,6 +35,7 @@ welcomeRole.innerHTML="🛡 Role : "+(role||"User");
 
 function logout(){
 
+
 localStorage.removeItem("netforge_username");
 localStorage.removeItem("netforge_kelas");
 localStorage.removeItem("netforge_role");
@@ -42,6 +43,42 @@ localStorage.removeItem("netforge_role");
 window.location.href="login.html";
 
 }
+
+function toggleSidebar(){
+
+const sidebar=document.querySelector(".sidebar");
+const main=document.querySelector(".main");
+
+if(!sidebar || !main) return;
+
+sidebar.classList.toggle("collapsed");
+main.classList.toggle("sidebar-collapsed");
+
+localStorage.setItem(
+"netforge_sidebar",
+sidebar.classList.contains("collapsed")
+);
+
+}
+
+function restoreSidebar(){
+
+const collapsed=
+localStorage.getItem("netforge_sidebar");
+
+const sidebar=document.querySelector(".sidebar");
+const main=document.querySelector(".main");
+
+if(collapsed==="true" && sidebar && main){
+
+sidebar.classList.add("collapsed");
+main.classList.add("sidebar-collapsed");
+
+}
+
+}
+
+window.addEventListener("load",restoreSidebar);
 
 // ===== RANDOM =====
 
@@ -1738,3 +1775,115 @@ window.addEventListener(
 "load",
 showUser
 );
+
+function toggleProfileMenu(){
+
+const menu=document.getElementById("profileDropdown");
+
+if(!menu) return;
+
+menu.classList.toggle("show");
+
+}
+
+function updateProfile(){
+
+const user=localStorage.getItem("netforge_user");
+const topbarUser=document.getElementById("topbarUser");
+
+if(topbarUser){
+    topbarUser.textContent=user || "User";
+}
+
+if(!user) return;
+
+const name=document.getElementById("profileName");
+const profileUser=document.getElementById("profileUserName");
+
+if(name) name.textContent=user;
+
+if(profileUser) profileUser.textContent=user;
+
+}
+
+function openSettings(){
+
+alert("Settings NetForge akan tersedia di V3.1.");
+
+}
+
+window.addEventListener("load",updateProfile);
+
+document.addEventListener("click",function(e){
+
+const profile=document.querySelector(".profile-menu");
+
+if(!profile) return;
+
+if(!profile.contains(e.target)){
+
+const dropdown=document.getElementById("profileDropdown");
+
+if(dropdown){
+
+dropdown.classList.remove("show");
+
+}
+
+}
+
+});
+
+function showToast(message,type="success"){
+
+const container=
+document.getElementById("toastContainer");
+
+if(!container) return;
+
+const toast=document.createElement("div");
+
+toast.className=`toast ${type}`;
+
+toast.textContent=message;
+
+container.appendChild(toast);
+
+setTimeout(()=>{
+
+toast.style.opacity="0";
+toast.style.transform="translateX(30px)";
+
+setTimeout(()=>{
+toast.remove();
+},300);
+
+},3000);
+
+}
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+showToast("NetForge V3.1 aktif 🚀");
+},500);
+
+});
+
+function updateActiveMenu(){
+
+    const links=document.querySelectorAll(".sidebar a");
+    const current=window.location.hash || "#dashboard";
+
+    links.forEach(link=>{
+        link.classList.remove("active");
+
+        if(link.getAttribute("href")===current){
+            link.classList.add("active");
+        }
+    });
+
+}
+
+window.addEventListener("hashchange",updateActiveMenu);
+window.addEventListener("load",updateActiveMenu);

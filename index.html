@@ -17,56 +17,232 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+>
+
 </head>
 
 <body>
 
 <div class="sidebar">
+<button class="sidebar-toggle" onclick="toggleSidebar()" title="Collapse Sidebar">
+☰
+</button>
 
 <h1>🌐 NetForge</h1>
 <h3 id="welcomeUser"></h3>
 
-<a href="#dashboard">🏠 Dashboard</a>
+<div class="sidebar-group-title">
+  MAIN
+</div>
 
-<a href="#monitor">📊 Monitor</a>
+<a href="#dashboard">
+  <i class="fa-solid fa-house"></i>
+  <span>Dashboard</span>
+</a>
 
-<a href="#tools">🌐 Networking Tools</a>
+<a href="#monitor">
+  <i class="fa-solid fa-chart-line"></i>
+  <span>Monitor</span>
+</a>
 
-<a href="#ipv6">🌐 IPv6 Calculator</a>
+<div class="sidebar-group-title">
+  NETWORK
+</div>
 
-<a href="#vlsm">📡 VLSM Calculator</a>
+<a href="#tools">
+  <i class="fa-solid fa-network-wired"></i>
+  <span>Networking Tools</span>
+</a>
 
-<a href="#routing">🔀 Routing Simulator</a>
+<a href="#ipv6">
+  <i class="fa-solid fa-globe"></i>
+  <span>IPv6 Calculator</span>
+</a>
 
-<a href="#traceroute">📶 Traceroute</a>
+<a href="#vlsm">
+  <i class="fa-solid fa-diagram-project"></i>
+  <span>VLSM Calculator</span>
+</a>
 
-<a href="#topology">🗺️ Network Topology</a>
+<a href="#routing">
+  <i class="fa-solid fa-route"></i>
+  <span>Routing Simulator</span>
+</a>
 
-<a href="#whois">🌍 WHOIS Lookup</a>
+<a href="#traceroute">
+  <i class="fa-solid fa-location-crosshairs"></i>
+  <span>Traceroute</span>
+</a>
 
-<a href="#dns">🌐 DNS Lookup</a>
+<a href="#topology">
+  <i class="fa-solid fa-sitemap"></i>
+  <span>Network Topology</span>
+</a>
 
-<a href="#portscanner">📡 Port Scanner</a>
+<div class="sidebar-group-title">
+  TOOLS
+</div>
 
-<a href="#terminal-section">💻 Terminal</a>
+<a href="#whois">
+  <i class="fa-solid fa-earth-americas"></i>
+  <span>WHOIS Lookup</span>
+</a>
 
-<a href="#about">ℹ️ About</a>
+<a href="#dns">
+  <i class="fa-solid fa-server"></i>
+  <span>DNS Lookup</span>
+</a>
+
+<a href="#portscanner">
+  <i class="fa-solid fa-plug"></i>
+  <span>Port Scanner</span>
+</a>
+
+<a href="#terminal-section">
+  <i class="fa-solid fa-terminal"></i>
+  <span>Terminal</span>
+</a>
+
+<div class="sidebar-group-title">
+  SYSTEM
+</div>
+
+<a href="#about">
+  <i class="fa-solid fa-circle-info"></i>
+  <span>About</span>
+</a>
 
 <button onclick="toggleTheme()">
 🌙 Dark / Light
 </button>
 
 <button onclick="logoutNetForge()">
-🚪 Logout
-</button>
+<div class="profile-menu">
+
+  <button class="profile-button" onclick="toggleProfileMenu()">
+    <i class="fa-solid fa-user"></i>
+    <span id="profileName">Profile</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+
+  <div id="profileDropdown" class="profile-dropdown">
+
+    <div class="profile-header">
+      <i class="fa-solid fa-circle-user"></i>
+      <div>
+        <strong id="profileUserName">User</strong>
+        <small>NetForge User</small>
+      </div>
+    </div>
+
+    <button onclick="openSettings()">
+      <i class="fa-solid fa-gear"></i>
+      Settings
+    </button>
+
+    <button onclick="logoutNetForge()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Logout
+    </button>
+
+  </div>
+
+</div>
 
 </div>
 
 <div class="main">
 
+<header class="nf-topbar">
+
+  <div class="nf-topbar-title">
+    <span class="nf-mobile-menu" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </span>
+
+    <div>
+      <small>NETFORGE NETWORK PLATFORM</small>
+      <h2>Network Dashboard</h2>
+    </div>
+  </div>
+
+  <div class="nf-topbar-actions">
+
+    <div class="nf-status">
+      <span></span>
+      System Online
+    </div>
+
+    <div class="nf-user">
+      <div class="nf-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <div class="nf-user-info">
+        <strong id="topbarUser">User</strong>
+        <small>NetForge User</small>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
 <section id="dashboard">
 
 <h1>Dashboard</h1>
+<div class="nf-hero">
+
+  <div class="nf-hero-content">
+
+    <span class="nf-badge">
+      <i class="fa-solid fa-network-wired"></i>
+      NETFORGE NETWORK LAB
+    </span>
+
+    <h1>Selamat Datang di NetForge! 👋</h1>
+
+    <p>
+      Kelola, analisis, dan simulasikan jaringan
+      dalam satu workspace.
+    </p>
+
+    <div class="nf-hero-actions">
+      <a href="#tools" class="nf-primary-btn">
+        <i class="fa-solid fa-rocket"></i>
+        Mulai Networking
+      </a>
+
+      <a href="#topology" class="nf-secondary-btn">
+        <i class="fa-solid fa-diagram-project"></i>
+        Buka Topology
+      </a>
+    </div>
+
+  </div>
+
+  <div class="nf-hero-visual">
+    <i class="fa-solid fa-network-wired"></i>
+    <div class="nf-orbit orbit-1"></div>
+    <div class="nf-orbit orbit-2"></div>
+  </div>
+
+</div>
+
+<div class="nf-section-title">
+  <div>
+    <small>NETWORK OVERVIEW</small>
+    <h2>System Overview</h2>
+  </div>
+
+  <span class="nf-live-badge">
+    <i class="fa-solid fa-circle"></i>
+    LIVE
+  </span>
+</div>
 
 <h2 id="welcomeName">Welcome</h2>
 
@@ -686,6 +862,8 @@ https://github.com/LyuuZhnn/NetForge/
 </div>
 
 <script src="script.js"></script>
+
+<div id="toastContainer"></div>
 
 </body>
 
