@@ -4934,3 +4934,48 @@ body{
 
 #
 
+
+/* =========================================
+   FIX — DASHBOARD HORIZONTAL OVERFLOW
+   ========================================= */
+
+html,
+body{
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:hidden !important;
+}
+
+.main{
+  box-sizing:border-box !important;
+  width:calc(100% - 230px) !important;
+  max-width:none !important;
+  margin-left:230px !important;
+}
+
+#dashboard{
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:1400px !important;
+  margin:0 auto !important;
+}
+
+#dashboard > .grid{
+  box-sizing:border-box !important;
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) !important;
+  gap:20px !important;
+}
+
+@media(max-width:650px){
+  .main{
+    width:100% !important;
+    margin-left:0 !important;
+  }
+
+  #dashboard > .grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
