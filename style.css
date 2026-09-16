@@ -4708,3 +4708,16 @@ body{
     font-size:28px !important;
   }
 }
+
+/* CLOCK — DASHBOARD */
+#dashboard .nf-user-info-block #clock{
+  display:block !important;
+  position:static !important;
+  margin:12px 0 0 !important;
+  font-size:30px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  color:#00e5ff !important;
+  letter-spacing:1px !important;
+}
+
