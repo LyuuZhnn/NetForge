@@ -1903,3 +1903,52 @@ function updateActiveMenu(){
 
 window.addEventListener("hashchange",updateActiveMenu);
 window.addEventListener("load",updateActiveMenu);
+
+
+/* =========================================
+   NETFORGE QUICK SEARCH
+   ========================================= */
+
+function searchNetForge(value){
+
+  const query = value.trim().toLowerCase();
+
+  if(!query) return;
+
+  const targets = {
+    dashboard:"#dashboard",
+    monitor:"#monitor",
+    tools:"#tools",
+    networking:"#tools",
+    ipv6:"#ipv6",
+    vlsm:"#vlsm",
+    routing:"#routing",
+    topology:"#topology",
+    traceroute:"#traceroute",
+    dns:"#dns",
+    whois:"#whois",
+    scanner:"#portscanner",
+    port:"#portscanner",
+    terminal:"#terminal-section",
+    about:"#about"
+  };
+
+  for(const key in targets){
+
+    if(key.includes(query) || query.includes(key)){
+
+      window.location.hash = targets[key];
+
+      showToast(
+        "Membuka " + key.toUpperCase()
+      );
+
+      return;
+    }
+  }
+
+  showToast(
+    "Fitur \"" + value + "\" tidak ditemukan",
+    "error"
+  );
+}

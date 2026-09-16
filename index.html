@@ -169,6 +169,16 @@
     </div>
   </div>
 
+<div class="nf-topbar-search">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input
+    type="text"
+    placeholder="Search tools, commands, or features..."
+    onkeydown="if(event.key==='Enter') searchNetForge(this.value)"
+  >
+  <kbd>Ctrl + K</kbd>
+</div>
+
   <div class="nf-topbar-actions">
 
     <div class="nf-status">
@@ -306,72 +316,69 @@
 
 </div>
 
-<div class="nf-dashboard-panels">
+<!-- NETFORGE DASHBOARD PANELS -->
 
-  <div class="nf-panel">
+<div class="nf-dashboard-panels nf-reference-panels">
+
+  <!-- NETWORK TRAFFIC -->
+  <div class="nf-panel nf-traffic-panel">
 
     <div class="nf-panel-header">
       <div>
-        <small>NETWORK ACTIVITY</small>
-        <h2>System Activity</h2>
+        <small>NETWORK MONITOR</small>
+        <h2><i class="fa-solid fa-chart-line"></i> Network Traffic</h2>
       </div>
 
-      <span class="nf-panel-live">
-        <i class="fa-solid fa-circle"></i>
-        LIVE
-      </span>
+      <span class="nf-panel-badge">LIVE</span>
     </div>
 
-    <div class="nf-activity-list">
+    <div class="nf-traffic-chart">
 
-      <div class="nf-activity-item">
-        <span class="nf-activity-icon">
-          <i class="fa-solid fa-server"></i>
-        </span>
-        <div>
-          <strong>Server Online</strong>
-          <small>NetForge server is running</small>
-        </div>
-        <span class="nf-activity-status">OK</span>
+      <div class="nf-chart-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
-      <div class="nf-activity-item">
-        <span class="nf-activity-icon">
-          <i class="fa-solid fa-diagram-project"></i>
-        </span>
-        <div>
-          <strong>Topology Ready</strong>
-          <small>Network topology module ready</small>
-        </div>
-        <span class="nf-activity-status">READY</span>
+      <div class="nf-chart-bars">
+        <i style="height:32%"></i>
+        <i style="height:48%"></i>
+        <i style="height:38%"></i>
+        <i style="height:62%"></i>
+        <i style="height:52%"></i>
+        <i style="height:74%"></i>
+        <i style="height:58%"></i>
+        <i style="height:82%"></i>
+        <i style="height:66%"></i>
+        <i style="height:88%"></i>
+        <i style="height:72%"></i>
+        <i style="height:94%"></i>
       </div>
 
-      <div class="nf-activity-item">
-        <span class="nf-activity-icon">
-          <i class="fa-solid fa-terminal"></i>
-        </span>
-        <div>
-          <strong>Terminal Ready</strong>
-          <small>Network command simulator ready</small>
-        </div>
-        <span class="nf-activity-status">READY</span>
-      </div>
+    </div>
 
+    <div class="nf-chart-legend">
+      <span><i></i> Download</span>
+      <span><i></i> Upload</span>
     </div>
 
   </div>
 
 
+  <!-- QUICK ACTIONS -->
   <div class="nf-panel">
 
     <div class="nf-panel-header">
       <div>
-        <small>QUICK ACTIONS</small>
-        <h2>Network Tools</h2>
+        <small>SHORTCUTS</small>
+        <h2><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
       </div>
+
+      <a href="#tools" class="nf-see-all">See All →</a>
     </div>
 
-    <div class="nf-quick-actions">
+    <div class="nf-quick-actions nf-reference-actions">
 
       <a href="#tools">
         <i class="fa-solid fa-network-wired"></i>
@@ -383,7 +390,7 @@
       </a>
 
       <a href="#topology">
-        <i class="fa-solid fa-sitemap"></i>
+        <i class="fa-solid fa-diagram-project"></i>
         <span>
           <strong>Network Topology</strong>
           <small>Build network topology</small>
@@ -400,13 +407,217 @@
         <i class="fa-solid fa-chevron-right"></i>
       </a>
 
+      <a href="#topology" onclick="saveTopology()">
+        <i class="fa-solid fa-floppy-disk"></i>
+        <span>
+          <strong>Save Topology</strong>
+          <small>Save current topology</small>
+        </span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- RECENT ACTIVITY -->
+  <div class="nf-panel">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>NETWORK EVENTS</small>
+        <h2><i class="fa-solid fa-wave-square"></i> Recent Activity</h2>
+      </div>
+
+      <span class="nf-see-all">View All →</span>
+    </div>
+
+    <div class="nf-recent-list">
+
+      <div class="nf-recent-item">
+        <span class="nf-recent-icon green">
+          <i class="fa-solid fa-server"></i>
+        </span>
+
+        <div>
+          <strong>Server Online</strong>
+          <small>NetForge server is running</small>
+        </div>
+
+        <time>Now</time>
+      </div>
+
+      <div class="nf-recent-item">
+        <span class="nf-recent-icon blue">
+          <i class="fa-solid fa-diagram-project"></i>
+        </span>
+
+        <div>
+          <strong>Topology Ready</strong>
+          <small>Network topology available</small>
+        </div>
+
+        <time>Now</time>
+      </div>
+
+      <div class="nf-recent-item">
+        <span class="nf-recent-icon purple">
+          <i class="fa-solid fa-terminal"></i>
+        </span>
+
+        <div>
+          <strong>Terminal Ready</strong>
+          <small>CLI simulator ready</small>
+        </div>
+
+        <time>Now</time>
+      </div>
+
     </div>
 
   </div>
 
 </div>
 
-<br>
+
+<!-- LOWER DASHBOARD -->
+
+<div class="nf-lower-dashboard">
+
+  <!-- SYSTEM OVERVIEW -->
+  <div class="nf-panel nf-system-overview">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>SYSTEM MONITOR</small>
+        <h2><i class="fa-solid fa-server"></i> System Overview</h2>
+      </div>
+
+      <span class="nf-panel-badge green">LIVE</span>
+    </div>
+
+    <div class="nf-system-row">
+      <span><i class="fa-solid fa-microchip"></i> CPU</span>
+      <div><b><span style="width:42%"></span></b></div>
+      <strong id="overviewCPU">42%</strong>
+    </div>
+
+    <div class="nf-system-row">
+      <span><i class="fa-solid fa-memory"></i> RAM</span>
+      <div><b><span style="width:58%"></span></b></div>
+      <strong id="overviewRAM">58%</strong>
+    </div>
+
+    <div class="nf-system-row">
+      <span><i class="fa-solid fa-hard-drive"></i> Storage</span>
+      <div><b><span style="width:67%"></span></b></div>
+      <strong>67%</strong>
+    </div>
+
+    <div class="nf-system-row">
+      <span><i class="fa-solid fa-network-wired"></i> Network</span>
+      <div><b><span style="width:82%"></span></b></div>
+      <strong>Active</strong>
+    </div>
+
+  </div>
+
+
+  <!-- NETWORK STATUS -->
+  <div class="nf-panel">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>CONNECTIVITY</small>
+        <h2><i class="fa-solid fa-globe"></i> Network Status</h2>
+      </div>
+
+      <span class="nf-panel-badge green">NORMAL</span>
+    </div>
+
+    <div class="nf-network-status">
+
+      <div>
+        <span><i></i> Internet</span>
+        <strong>Connected</strong>
+      </div>
+
+      <div>
+        <span><i></i> Gateway</span>
+        <strong>192.168.1.1</strong>
+      </div>
+
+      <div>
+        <span><i></i> DNS</span>
+        <strong>8.8.8.8</strong>
+      </div>
+
+      <div>
+        <span><i></i> Local Network</span>
+        <strong>192.168.1.0/24</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOP TOOLS -->
+  <div class="nf-panel">
+
+    <div class="nf-panel-header">
+      <div>
+        <small>FREQUENTLY USED</small>
+        <h2><i class="fa-solid fa-star"></i> Top Tools</h2>
+      </div>
+
+      <span class="nf-see-all">Most Used</span>
+    </div>
+
+    <div class="nf-top-tools">
+
+      <a href="#monitor">
+        <b>1</b>
+        <i class="fa-solid fa-chart-line"></i>
+        <span>
+          <strong>Ping</strong>
+          <small>Network diagnostic</small>
+        </span>
+      </a>
+
+      <a href="#traceroute">
+        <b>2</b>
+        <i class="fa-solid fa-route"></i>
+        <span>
+          <strong>Traceroute</strong>
+          <small>Route tracking</small>
+        </span>
+      </a>
+
+      <a href="#dns">
+        <b>3</b>
+        <i class="fa-solid fa-globe"></i>
+        <span>
+          <strong>DNS Lookup</strong>
+          <small>Domain resolution</small>
+        </span>
+      </a>
+
+      <a href="#portscanner">
+        <b>4</b>
+        <i class="fa-solid fa-plug"></i>
+        <span>
+          <strong>Port Scanner</strong>
+          <small>Security check</small>
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
 
 <button onclick="exportPDF()">
 📄 Export PDF
