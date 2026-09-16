@@ -15,19 +15,19 @@ const welcomeRole=document.getElementById("welcomeRole");
 
 if(welcomeName){
 
-welcomeName.innerHTML="👋 Welcome, "+(username||"Guest");
+welcomeName.innerHTML=""
 
 }
 
 if(welcomeClass){
 
-welcomeClass.innerHTML="📚 Kelas : "+(kelas||"-");
+welcomeClass.innerHTML="Kelas: "+(kelas||"-");
 
 }
 
 if(welcomeRole){
 
-welcomeRole.innerHTML="🛡 Role : "+(role||"User");
+welcomeRole.innerHTML="Role: "+(role||"User");
 
 }
 

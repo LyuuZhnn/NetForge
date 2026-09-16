@@ -1,1254 +1,822 @@
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NetForge Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
->
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="sidebar">
-<button class="sidebar-toggle" onclick="toggleSidebar()" title="Collapse Sidebar">
-☰
-</button>
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-<h1>🌐 NetForge</h1>
-<h3 id="welcomeUser"></h3>
-
-<div class="sidebar-group-title">
-  MAIN
-</div>
-
-<a href="#dashboard">
-  <i class="fa-solid fa-house"></i>
-  <span>Dashboard</span>
-</a>
-
-<a href="#monitor">
-  <i class="fa-solid fa-chart-line"></i>
-  <span>Monitor</span>
-</a>
-
-<div class="sidebar-group-title">
-  NETWORK
-</div>
-
-<a href="#tools">
-  <i class="fa-solid fa-network-wired"></i>
-  <span>Networking Tools</span>
-</a>
-
-<a href="#ipv6">
-  <i class="fa-solid fa-globe"></i>
-  <span>IPv6 Calculator</span>
-</a>
-
-<a href="#vlsm">
-  <i class="fa-solid fa-diagram-project"></i>
-  <span>VLSM Calculator</span>
-</a>
-
-<a href="#routing">
-  <i class="fa-solid fa-route"></i>
-  <span>Routing Simulator</span>
-</a>
-
-<a href="#traceroute">
-  <i class="fa-solid fa-location-crosshairs"></i>
-  <span>Traceroute</span>
-</a>
-
-<a href="#topology">
-  <i class="fa-solid fa-sitemap"></i>
-  <span>Network Topology</span>
-</a>
-
-<div class="sidebar-group-title">
-  TOOLS
-</div>
-
-<a href="#whois">
-  <i class="fa-solid fa-earth-americas"></i>
-  <span>WHOIS Lookup</span>
-</a>
-
-<a href="#dns">
-  <i class="fa-solid fa-server"></i>
-  <span>DNS Lookup</span>
-</a>
-
-<a href="#portscanner">
-  <i class="fa-solid fa-plug"></i>
-  <span>Port Scanner</span>
-</a>
-
-<a href="#terminal-section">
-  <i class="fa-solid fa-terminal"></i>
-  <span>Terminal</span>
-</a>
-
-<div class="sidebar-group-title">
-  SYSTEM
-</div>
-
-<a href="#about">
-  <i class="fa-solid fa-circle-info"></i>
-  <span>About</span>
-</a>
-
-<button onclick="toggleTheme()">
-🌙 Dark / Light
-</button>
-
-<button onclick="logoutNetForge()">
-<div class="profile-menu">
-
-  <button class="profile-button" onclick="toggleProfileMenu()">
-    <i class="fa-solid fa-user"></i>
-    <span id="profileName">Profile</span>
-    <i class="fa-solid fa-chevron-down"></i>
+  <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle Sidebar">
+    ☰
   </button>
 
-  <div id="profileDropdown" class="profile-dropdown">
-
-    <div class="profile-header">
-      <i class="fa-solid fa-circle-user"></i>
-      <div>
-        <strong id="profileUserName">User</strong>
-        <small>NetForge User</small>
-      </div>
-    </div>
-
-    <button onclick="openSettings()">
-      <i class="fa-solid fa-gear"></i>
-      Settings
-    </button>
-
-      <i class="fa-solid fa-right-from-bracket"></i>
-      Logout
-    </button>
-
+  <div class="brand">
+    <h1>🌐 NetForge</h1>
+    <span id="welcomeUser"></span>
   </div>
 
-</div>
+  <nav>
 
-</div>
+    <div class="sidebar-group-title">MAIN</div>
 
-<div class="main">
+    <a href="#dashboard">
+      <i class="fa-solid fa-house"></i>
+      <span>Dashboard</span>
+    </a>
 
-<header class="nf-topbar">
+    <a href="#monitor">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>Monitor</span>
+    </a>
 
-  <div class="nf-topbar-title">
-    <span class="nf-mobile-menu" onclick="toggleSidebar()">
-      <i class="fa-solid fa-bars"></i>
-    </span>
+    <div class="sidebar-group-title">NETWORKING</div>
 
-    <div>
-      <small>NETFORGE NETWORK PLATFORM</small>
+    <a href="#tools">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <span>Networking Tools</span>
+    </a>
+
+    <a href="#ipv6">
+      <i class="fa-solid fa-globe"></i>
+      <span>IPv6 Calculator</span>
+    </a>
+
+    <a href="#vlsm">
+      <i class="fa-solid fa-network-wired"></i>
+      <span>VLSM Calculator</span>
+    </a>
+
+    <a href="#routing">
+      <i class="fa-solid fa-route"></i>
+      <span>Routing Simulator</span>
+    </a>
+
+    <a href="#traceroute">
+      <i class="fa-solid fa-road"></i>
+      <span>Traceroute</span>
+    </a>
+
+    <a href="#topology">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span>Network Topology</span>
+    </a>
+
+    <div class="sidebar-group-title">NETWORK SERVICES</div>
+
+    <a href="#whois">
+      <i class="fa-solid fa-id-card"></i>
+      <span>WHOIS Lookup</span>
+    </a>
+
+    <a href="#dns">
+      <i class="fa-solid fa-server"></i>
+      <span>DNS Lookup</span>
+    </a>
+
+    <a href="#portscanner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Port Scanner</span>
+    </a>
+
+    <a href="#terminal-section">
+      <i class="fa-solid fa-terminal"></i>
+      <span>Linux Terminal</span>
+    </a>
+
+    <div class="sidebar-group-title">OTHER</div>
+
+    <a href="#about">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+
+  </nav>
+
+  <div class="sidebar-bottom">
+    <button onclick="toggleTheme()">
+      <i class="fa-solid fa-moon"></i>
+      <span>Dark / Light</span>
+    </button>
+
+    <button onclick="logoutNetForge()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </button>
+  </div>
+
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <header class="nf-topbar">
+
+    <div class="nf-mobile-menu" onclick="toggleSidebar()">
+      ☰
+    </div>
+
+    <div class="nf-topbar-title">
+      <small>NETFORGE</small>
       <h2>Network Dashboard</h2>
     </div>
-  </div>
 
-<div class="nf-topbar-search">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input
-    type="text"
-    placeholder="Search tools, commands, or features..."
-    onkeydown="if(event.key==='Enter') searchNetForge(this.value)"
-  >
-  <kbd>Ctrl + K</kbd>
-</div>
+    <div class="nf-topbar-right">
 
-  <div class="nf-topbar-actions">
-
-    <div class="nf-status">
-      <span></span>
-      System Online
-    </div>
-
-    <div class="nf-user">
-      <div class="nf-avatar">
-        <i class="fa-solid fa-user"></i>
+      <div class="nf-status">
+        <span></span>
+        System Online
       </div>
 
-      <div class="nf-user-info">
-        <strong id="topbarUser">User</strong>
-        <small>NetForge User</small>
+      <div class="profile-menu">
+
+        <button class="profile-button" onclick="toggleProfileMenu()">
+          <i class="fa-solid fa-user"></i>
+          <span id="topbarUser">User</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <div id="profileDropdown" class="profile-dropdown">
+
+          <div class="profile-header">
+            <strong id="profileName">User</strong>
+            <small id="profileUserName">user</small>
+          </div>
+
+          <button onclick="openSettings()">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          </button>
+
+          <button onclick="logoutNetForge()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+          </button>
+
+        </div>
+
       </div>
+
     </div>
 
-  </div>
+  </header>
 
-</header>
 
-<section id="dashboard">
+  <!-- DASHBOARD -->
+  <section id="dashboard">
 
-<h1>Dashboard</h1>
-<div class="nf-hero">
+    <h1>Dashboard</h1>
 
-  <div class="nf-hero-content">
+    <div class="nf-hero">
 
-    <span class="nf-badge">
-      <i class="fa-solid fa-network-wired"></i>
-      NETFORGE NETWORK LAB
-    </span>
-
-    <h1>Selamat Datang di NetForge! 👋</h1>
-
-    <p>
-      Kelola, analisis, dan simulasikan jaringan
-      dalam satu workspace.
-    </p>
-
-    <div class="nf-hero-actions">
-      <a href="#tools" class="nf-primary-btn">
-        <i class="fa-solid fa-rocket"></i>
-        Mulai Networking
-      </a>
-
-      <a href="#topology" class="nf-secondary-btn">
-        <i class="fa-solid fa-diagram-project"></i>
-        Buka Topology
-      </a>
-    </div>
-
-  </div>
-
-  <div class="nf-hero-visual">
-    <i class="fa-solid fa-network-wired"></i>
-    <div class="nf-orbit orbit-1"></div>
-    <div class="nf-orbit orbit-2"></div>
-  </div>
-
-</div>
-
-<div class="nf-section-title">
-  <div>
-    <small>NETWORK OVERVIEW</small>
-    <h2>System Overview</h2>
-  </div>
-
-  <span class="nf-live-badge">
-    <i class="fa-solid fa-circle"></i>
-    LIVE
-  </span>
-</div>
-
-<div class="nf-user-info-block">
-  <div class="nf-user-details">
-    <span id="welcomeRole">Role: user</span>
-    <span class="nf-detail-dot">-</span>
-    <span id="welcomeClass">Kelas: -</span>
-  </div>
-
-  <div id="clock">00:00:00</div>
-  <div id="today">Rabu, 16 September 2026</div>
-</div>
-<div class="grid">
-<div class="card">
-
-<h3>RAM Usage</h3>
-
-<h1 id="ram">0%</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Ping</h3>
-
-<h1 id="ping">0 ms</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Online User</h3>
-
-<h1 id="onlineUser">0</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Uptime</h3>
-
-<h1 id="uptime">00:00:00</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Server Status</h3>
-
-<h1 id="serverStatus">🟢 ONLINE</h1>
-
-</div>
-
-</div>
-</div>
-
-<!-- NETFORGE DASHBOARD PANELS -->
-
-<div class="nf-dashboard-panels nf-reference-panels">
-
-  <!-- NETWORK TRAFFIC -->
-  <div class="nf-panel nf-traffic-panel">
-
-    <div class="nf-panel-header">
       <div>
-        <small>NETWORK MONITOR</small>
-        <h2><i class="fa-solid fa-chart-line"></i> Network Traffic</h2>
+        <span class="hero-label">NETWORK MANAGEMENT SYSTEM</span>
+
+        <h1>Selamat Datang di NetForge! 👋</h1>
+
+        <p>
+          Monitor server, analisis jaringan, dan gunakan berbagai
+          networking tools dalam satu dashboard.
+        </p>
       </div>
 
-      <span class="nf-panel-badge">LIVE</span>
-    </div>
+      <div class="nf-user-info-block">
 
-    <div class="nf-traffic-chart">
+        <div class="nf-user-details">
+          <span id="welcomeRole">Role: user</span>
+          <span class="nf-detail-dot">-</span>
+          <span id="welcomeClass">Kelas: -</span>
+        </div>
 
-      <div class="nf-chart-lines">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+        <div id="clock">00:00:00</div>
+        <div id="today">Rabu, 16 September 2026</div>
 
-      <div class="nf-chart-bars">
-        <i style="height:32%"></i>
-        <i style="height:48%"></i>
-        <i style="height:38%"></i>
-        <i style="height:62%"></i>
-        <i style="height:52%"></i>
-        <i style="height:74%"></i>
-        <i style="height:58%"></i>
-        <i style="height:82%"></i>
-        <i style="height:66%"></i>
-        <i style="height:88%"></i>
-        <i style="height:72%"></i>
-        <i style="height:94%"></i>
       </div>
 
     </div>
 
-    <div class="nf-chart-legend">
-      <span><i></i> Download</span>
-      <span><i></i> Upload</span>
-    </div>
 
-  </div>
+    <!-- STAT CARDS -->
+    <div class="grid stat-grid">
 
-
-  <!-- QUICK ACTIONS -->
-  <div class="nf-panel">
-
-    <div class="nf-panel-header">
-      <div>
-        <small>SHORTCUTS</small>
-        <h2><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
+      <div class="card stat-card">
+        <div class="stat-icon">
+          <i class="fa-solid fa-memory"></i>
+        </div>
+        <div>
+          <h3>RAM Usage</h3>
+          <h1 id="ram">0%</h1>
+        </div>
       </div>
 
-      <a href="#tools" class="nf-see-all">See All →</a>
-    </div>
-
-    <div class="nf-quick-actions nf-reference-actions">
-
-      <a href="#tools">
-        <i class="fa-solid fa-network-wired"></i>
-        <span>
-          <strong>Networking Tools</strong>
-          <small>Subnet & network calculator</small>
-        </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
-
-      <a href="#topology">
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>
-          <strong>Network Topology</strong>
-          <small>Build network topology</small>
-        </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
-
-      <a href="#terminal-section">
-        <i class="fa-solid fa-terminal"></i>
-        <span>
-          <strong>Terminal</strong>
-          <small>Network CLI simulator</small>
-        </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
-
-      <a href="#topology" onclick="saveTopology()">
-        <i class="fa-solid fa-floppy-disk"></i>
-        <span>
-          <strong>Save Topology</strong>
-          <small>Save current topology</small>
-        </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <!-- RECENT ACTIVITY -->
-  <div class="nf-panel">
-
-    <div class="nf-panel-header">
-      <div>
-        <small>NETWORK EVENTS</small>
-        <h2><i class="fa-solid fa-wave-square"></i> Recent Activity</h2>
+      <div class="card stat-card">
+        <div class="stat-icon">
+          <i class="fa-solid fa-signal"></i>
+        </div>
+        <div>
+          <h3>Ping</h3>
+          <h1 id="ping">0 ms</h1>
+        </div>
       </div>
 
-      <span class="nf-see-all">View All →</span>
-    </div>
+      <div class="card stat-card">
+        <div class="stat-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+          <h3>Online User</h3>
+          <h1 id="onlineUser">0</h1>
+        </div>
+      </div>
 
-    <div class="nf-recent-list">
+      <div class="card stat-card">
+        <div class="stat-icon">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div>
+          <h3>Uptime</h3>
+          <h1 id="uptime">00:00:00</h1>
+        </div>
+      </div>
 
-      <div class="nf-recent-item">
-        <span class="nf-recent-icon green">
+      <div class="card stat-card">
+        <div class="stat-icon">
           <i class="fa-solid fa-server"></i>
-        </span>
-
+        </div>
         <div>
-          <strong>Server Online</strong>
-          <small>NetForge server is running</small>
+          <h3>Server Status</h3>
+          <h1 id="serverStatus">🟢 ONLINE</h1>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- DASHBOARD PANELS -->
+    <div class="dashboard-panels">
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-chart-line"></i> Network Traffic</h2>
+        </div>
+        <canvas id="trafficChart"></canvas>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
         </div>
 
-        <time>Now</time>
+        <div class="quick-actions">
+          <a href="#tools">Networking Tools</a>
+          <a href="#topology">Network Topology</a>
+          <a href="#terminal-section">Linux Terminal</a>
+          <a href="#dns">DNS Lookup</a>
+          <a href="#portscanner">Port Scanner</a>
+        </div>
       </div>
 
-      <div class="nf-recent-item">
-        <span class="nf-recent-icon blue">
-          <i class="fa-solid fa-diagram-project"></i>
-        </span>
-
-        <div>
-          <strong>Topology Ready</strong>
-          <small>Network topology available</small>
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-wave-square"></i> Recent Activity</h2>
         </div>
 
-        <time>Now</time>
+        <div class="activity-list">
+          <div>System initialized</div>
+          <div>Network monitoring active</div>
+          <div>Server status online</div>
+        </div>
       </div>
 
-      <div class="nf-recent-item">
-        <span class="nf-recent-icon purple">
-          <i class="fa-solid fa-terminal"></i>
-        </span>
-
-        <div>
-          <strong>Terminal Ready</strong>
-          <small>CLI simulator ready</small>
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-server"></i> System Overview</h2>
         </div>
 
-        <time>Now</time>
+        <div class="overview-grid">
+          <div>
+            <span>CPU</span>
+            <strong id="overviewCPU">0%</strong>
+          </div>
+
+          <div>
+            <span>RAM</span>
+            <strong id="overviewRAM">0%</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-globe"></i> Network Status</h2>
+        </div>
+
+        <div class="network-status">
+          <span class="status-dot"></span>
+          <strong>Network Operational</strong>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-star"></i> Top Tools</h2>
+        </div>
+
+        <div class="tool-mini-list">
+          <a href="#tools">Subnet Calculator</a>
+          <a href="#ipv6">IPv6 Calculator</a>
+          <a href="#topology">Topology Builder</a>
+        </div>
       </div>
 
     </div>
 
-  </div>
-
-</div>
+  </section>
 
 
-<!-- LOWER DASHBOARD -->
+  <!-- MONITOR -->
+  <section id="monitor">
 
-<div class="nf-lower-dashboard">
+    <div class="section-title">
+      <span>MONITORING</span>
+      <h2>📊 Monitor</h2>
+    </div>
 
-  <!-- SYSTEM OVERVIEW -->
-  <div class="nf-panel nf-system-overview">
+    <div class="grid monitor-grid">
 
-    <div class="nf-panel-header">
-      <div>
-        <small>SYSTEM MONITOR</small>
-        <h2><i class="fa-solid fa-server"></i> System Overview</h2>
+      <div class="card">
+        <h3>Upload Speed</h3>
+        <h1 id="uploadSpeed">0 Mbps</h1>
       </div>
 
-      <span class="nf-panel-badge green">LIVE</span>
-    </div>
-
-    <div class="nf-system-row">
-      <span><i class="fa-solid fa-microchip"></i> CPU</span>
-      <div><b><span style="width:42%"></span></b></div>
-      <strong id="overviewCPU">42%</strong>
-    </div>
-
-    <div class="nf-system-row">
-      <span><i class="fa-solid fa-memory"></i> RAM</span>
-      <div><b><span style="width:58%"></span></b></div>
-      <strong id="overviewRAM">58%</strong>
-    </div>
-
-    <div class="nf-system-row">
-      <span><i class="fa-solid fa-hard-drive"></i> Storage</span>
-      <div><b><span style="width:67%"></span></b></div>
-      <strong>67%</strong>
-    </div>
-
-    <div class="nf-system-row">
-      <span><i class="fa-solid fa-network-wired"></i> Network</span>
-      <div><b><span style="width:82%"></span></b></div>
-      <strong>Active</strong>
-    </div>
-
-  </div>
-
-
-  <!-- NETWORK STATUS -->
-  <div class="nf-panel">
-
-    <div class="nf-panel-header">
-      <div>
-        <small>CONNECTIVITY</small>
-        <h2><i class="fa-solid fa-globe"></i> Network Status</h2>
+      <div class="card">
+        <h3>Download Speed</h3>
+        <h1 id="downloadSpeed">0 Mbps</h1>
       </div>
 
-      <span class="nf-panel-badge green">NORMAL</span>
-    </div>
-
-    <div class="nf-network-status">
-
-      <div>
-        <span><i></i> Internet</span>
-        <strong>Connected</strong>
-      </div>
-
-      <div>
-        <span><i></i> Gateway</span>
-        <strong>192.168.1.1</strong>
-      </div>
-
-      <div>
-        <span><i></i> DNS</span>
-        <strong>8.8.8.8</strong>
-      </div>
-
-      <div>
-        <span><i></i> Local Network</span>
-        <strong>192.168.1.0/24</strong>
+      <div class="card">
+        <h3>Server Load</h3>
+        <div class="progress">
+          <div id="serverBar"></div>
+        </div>
       </div>
 
     </div>
 
-  </div>
-
-
-  <!-- TOP TOOLS -->
-  <div class="nf-panel">
-
-    <div class="nf-panel-header">
-      <div>
-        <small>FREQUENTLY USED</small>
-        <h2><i class="fa-solid fa-star"></i> Top Tools</h2>
-      </div>
-
-      <span class="nf-see-all">Most Used</span>
+    <div class="panel chart-panel">
+      <h2><i class="fa-solid fa-chart-area"></i> Live Network Chart</h2>
+      <canvas id="liveChart"></canvas>
     </div>
 
-    <div class="nf-top-tools">
+    <button class="primary-btn" onclick="exportPDF()">
+      <i class="fa-solid fa-file-pdf"></i>
+      Export PDF
+    </button>
 
-      <a href="#monitor">
-        <b>1</b>
-        <i class="fa-solid fa-chart-line"></i>
-        <span>
-          <strong>Ping</strong>
-          <small>Network diagnostic</small>
-        </span>
+  </section>
+
+
+  <!-- TOOLS -->
+  <section id="tools">
+
+    <div class="section-title">
+      <span>NETWORK UTILITIES</span>
+      <h2>🌐 Networking Tools</h2>
+    </div>
+
+    <div class="tool-grid">
+
+      <div class="tool-card">
+        <h3>Subnet Calculator</h3>
+
+        <input id="ipInput" placeholder="192.168.1.0">
+        <input id="prefixInput" type="number" placeholder="/24">
+
+        <button onclick="calculateSubnet()">Calculate</button>
+
+        <div id="subnetResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>IPv4 Validator</h3>
+
+        <input id="ipv4Input" placeholder="192.168.1.1">
+
+        <button onclick="validateIPv4()">Check</button>
+
+        <div id="ipv4Result" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>IP Class Checker</h3>
+
+        <input id="classInput" placeholder="192.168.1.1">
+
+        <button onclick="checkIPClass()">Check</button>
+
+        <div id="classResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>CIDR Converter</h3>
+
+        <input id="cidrInput" placeholder="192.168.1.0/24">
+
+        <button onclick="convertCIDR()">Convert</button>
+
+        <div id="cidrResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Binary → Decimal</h3>
+
+        <input id="binaryInput" placeholder="10101010">
+
+        <button onclick="convertBinary()">Convert</button>
+
+        <div id="binaryResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Wildcard Calculator</h3>
+
+        <input id="wildcardInput" placeholder="255.255.255.0">
+
+        <button onclick="calculateWildcard()">Calculate</button>
+
+        <div id="wildcardResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Host Calculator</h3>
+
+        <input id="hostPrefix" type="number" placeholder="/24">
+
+        <button onclick="calculateHost()">Calculate</button>
+
+        <div id="hostResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Password Generator</h3>
+
+        <button onclick="generatePassword()">Generate</button>
+
+        <div id="passwordResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Ping Simulator</h3>
+
+        <input id="pingHost" placeholder="google.com">
+
+        <button onclick="pingHost()">Ping</button>
+
+        <div id="pingResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>DNS Lookup</h3>
+
+        <input id="dnsInput" placeholder="google.com">
+
+        <button onclick="dnsLookup()">Lookup</button>
+
+        <div id="dnsResult" class="result"></div>
+      </div>
+
+
+      <div class="tool-card">
+        <h3>Network Scanner</h3>
+
+        <button onclick="scanNetwork()">Scan Network</button>
+
+        <div id="scanResult" class="result"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IPV6 -->
+  <section id="ipv6">
+
+    <div class="section-title">
+      <span>IPV6</span>
+      <h2>🌐 IPv6 Calculator</h2>
+    </div>
+
+    <div class="tool-card wide">
+      <input id="ipv6Input" placeholder="2001:db8::1/64">
+      <button onclick="calculateIPv6()">Calculate</button>
+      <div id="ipv6Result" class="result"></div>
+    </div>
+
+  </section>
+
+
+  <!-- VLSM -->
+  <section id="vlsm">
+
+    <div class="section-title">
+      <span>SUBNETTING</span>
+      <h2>📡 VLSM Calculator</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="vlsmNetwork" placeholder="192.168.10.0/24">
+      <input id="vlsmHost" type="number" placeholder="Jumlah Host">
+
+      <button onclick="calculateVLSM()">Calculate</button>
+
+      <div id="vlsmResult" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ROUTING -->
+  <section id="routing">
+
+    <div class="section-title">
+      <span>ROUTING</span>
+      <h2>🔀 Routing Simulator</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="routeDest" placeholder="Destination (192.168.2.0/24)">
+      <input id="routeGateway" placeholder="Gateway (192.168.1.1)">
+
+      <button onclick="simulateRouting()">Simulate</button>
+
+      <div id="routeResult" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRACEROUTE -->
+  <section id="traceroute">
+
+    <div class="section-title">
+      <span>PATH ANALYSIS</span>
+      <h2>📶 Traceroute Simulator</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="traceHost" placeholder="google.com">
+
+      <button onclick="runTraceroute()">Run Traceroute</button>
+
+      <div id="traceResult" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TOPOLOGY -->
+  <section id="topology">
+
+    <div class="section-title">
+      <span>NETWORK DESIGN</span>
+      <h2>🗺️ Network Topology</h2>
+    </div>
+
+    <div class="panel topology-panel">
+
+      <canvas id="topologyCanvas"></canvas>
+
+      <div class="topology-controls">
+
+        <button onclick="drawTopology()">Draw</button>
+        <button onclick="addDevice('router')">Router</button>
+        <button onclick="addDevice('switch')">Switch</button>
+        <button onclick="addDevice('pc')">PC</button>
+        <button onclick="addDevice('server')">Server</button>
+        <button onclick="clearTopology()">Clear</button>
+        <button onclick="saveTopology()">Save</button>
+        <button onclick="loadTopology()">Load</button>
+        <button onclick="exportTopology()">Export</button>
+        <button onclick="toggleConnectMode()">Connect</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHOIS -->
+  <section id="whois">
+
+    <div class="section-title">
+      <span>DOMAIN</span>
+      <h2>🌍 WHOIS Lookup</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="whoisDomain" placeholder="example.com">
+
+      <button onclick="whoisLookup()">Lookup</button>
+
+      <div id="whoisResult" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DNS -->
+  <section id="dns">
+
+    <div class="section-title">
+      <span>DNS</span>
+      <h2>🌐 DNS Lookup</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="dnsDomain" placeholder="example.com">
+
+      <button onclick="dnsLookupPro()">Lookup</button>
+
+      <div id="dnsResultPro" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PORT SCANNER -->
+  <section id="portscanner">
+
+    <div class="section-title">
+      <span>SECURITY TOOLS</span>
+      <h2>📡 Port Scanner</h2>
+    </div>
+
+    <div class="tool-card wide">
+
+      <input id="scanIP" placeholder="192.168.1.1">
+
+      <button onclick="scanPorts()">Scan Ports</button>
+
+      <div id="scanPortResult" class="result"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TERMINAL -->
+  <section id="terminal-section">
+
+    <div class="section-title">
+      <span>LINUX</span>
+      <h2>💻 Linux Terminal</h2>
+    </div>
+
+    <div class="terminal-box">
+
+      <div id="terminal">
+        NetForge Terminal<br>
+        Type a command to begin...
+      </div>
+
+      <div class="terminal-input-row">
+        <span>$</span>
+        <input id="terminal-input" autocomplete="off" placeholder="type command...">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-title">
+      <span>INFORMATION</span>
+      <h2>ℹ️ About</h2>
+    </div>
+
+    <div class="panel about-panel">
+
+      <h3>NetForge</h3>
+
+      <p>
+        NetForge adalah dashboard networking untuk monitoring,
+        simulasi jaringan, subnetting, troubleshooting,
+        dan berbagai network utilities.
+      </p>
+
+      <p class="muted">
+        Built for learning and network experimentation.
+      </p>
+
+      <a href="https://github.com/LyuuZhnn/NetForge/" target="_blank">
+        <i class="fa-brands fa-github"></i>
+        GitHub Repository
       </a>
 
-      <a href="#traceroute">
-        <b>2</b>
-        <i class="fa-solid fa-route"></i>
-        <span>
-          <strong>Traceroute</strong>
-          <small>Route tracking</small>
-        </span>
-      </a>
-
-      <a href="#dns">
-        <b>3</b>
-        <i class="fa-solid fa-globe"></i>
-        <span>
-          <strong>DNS Lookup</strong>
-          <small>Domain resolution</small>
-        </span>
-      </a>
-
-      <a href="#portscanner">
-        <b>4</b>
-        <i class="fa-solid fa-plug"></i>
-        <span>
-          <strong>Port Scanner</strong>
-          <small>Security check</small>
-        </span>
-      </a>
-
     </div>
 
-  </div>
+  </section>
 
-</div>
+</main>
 
-<button onclick="exportPDF()">
-📄 Export PDF
-</button>
 
-</section>
-
-<section id="monitor">
-
-<h2>📊 Monitor</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Upload Speed</h3>
-
-<h1 id="uploadSpeed">0 Mbps</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Download Speed</h3>
-
-<h1 id="downloadSpeed">0 Mbps</h1>
-
-</div>
-
-<div class="card">
-
-<h3>Server Load</h3>
-
-<div class="progress">
-
-<div id="serverBar"></div>
-
-</div>
-
-</div>
-
-</div>
-
-<canvas id="liveChart"></canvas>
-
-<br>
-
-<canvas id="trafficChart"></canvas>
-
-</section>
-
-<section id="tools">
-
-<h2>🌐 Networking Tools</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Subnet Calculator</h3>
-
-<input
-id="ipInput"
-placeholder="192.168.1.10">
-
-<input
-id="prefixInput"
-type="number"
-placeholder="24">
-
-<button onclick="calculateSubnet()">
-
-Hitung
-
-</button>
-
-<div
-id="subnetResult"
-class="result">
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>IPv4 Validator</h3>
-
-<input
-id="ipv4Input"
-placeholder="192.168.1.1">
-
-<button onclick="validateIPv4()">
-
-Check
-
-</button>
-
-<div
-id="ipv4Result"
-class="result">
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>IP Class Checker</h3>
-
-<input
-id="classInput"
-placeholder="192.168.1.1">
-
-<button onclick="checkIPClass()">
-
-Check
-
-</button>
-
-<div
-id="classResult"
-class="result">
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>CIDR Converter</h3>
-
-<input
-id="cidrInput"
-placeholder="255.255.255.0">
-
-<button onclick="convertCIDR()">
-
-Convert
-
-</button>
-
-<div
-id="cidrResult"
-class="result">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="tools-more">
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Binary → Decimal</h3>
-
-<input id="binaryInput" placeholder="10101010">
-
-<button onclick="convertBinary()">
-Convert
-</button>
-
-<div id="binaryResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>Wildcard Calculator</h3>
-
-<input id="wildcardInput" placeholder="255.255.255.0">
-
-<button onclick="calculateWildcard()">
-Calculate
-</button>
-
-<div id="wildcardResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>Host Calculator</h3>
-
-<input id="hostPrefix" type="number" placeholder="/24">
-
-<button onclick="calculateHost()">
-Calculate
-</button>
-
-<div id="hostResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>Password Generator</h3>
-
-<button onclick="generatePassword()">
-
-Generate
-
-</button>
-
-<div id="passwordResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>Ping Simulator</h3>
-
-<input id="pingHost" placeholder="google.com">
-
-<button onclick="pingHost()">
-
-Ping
-
-</button>
-
-<div id="pingResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>DNS Lookup</h3>
-
-<input id="dnsInput" placeholder="google.com">
-
-<button onclick="dnsLookup()">
-
-Lookup
-
-</button>
-
-<div id="dnsResult" class="result"></div>
-
-</div>
-
-<div class="card">
-
-<h3>Network Scanner</h3>
-
-<button onclick="scanNetwork()">
-
-Scan Network
-
-</button>
-
-<div id="scanResult" class="result"></div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="ipv6">
-
-<h2>🌐 IPv6 Calculator</h2>
-
-<div class="card">
-
-<input id="ipv6Input" placeholder="2001:db8::1/64">
-
-<button onclick="calculateIPv6()">
-Calculate
-</button>
-
-<div id="ipv6Result" class="result"></div>
-
-</div>
-
-</section>
-
-<section id="vlsm">
-
-<h2>📡 VLSM Calculator</h2>
-
-<div class="card">
-
-<input id="vlsmNetwork" placeholder="192.168.10.0/24">
-
-<input id="vlsmHost" type="number" placeholder="Jumlah Host">
-
-<button onclick="calculateVLSM()">
-
-Calculate
-
-</button>
-
-<div id="vlsmResult" class="result"></div>
-
-</div>
-
-</section>
-
-<section id="routing">
-
-<h2>🔀 Routing Simulator</h2>
-
-<div class="card">
-
-<input id="routeDest" placeholder="Destination (192.168.2.0/24)">
-
-<input id="routeGateway" placeholder="Gateway (192.168.1.1)">
-
-<button onclick="simulateRouting()">
-
-Simulate
-
-</button>
-
-<div id="routeResult" class="result"></div>
-
-</div>
-
-</section>
-
-<section id="traceroute">
-
-<h2>📶 Traceroute Simulator</h2>
-
-<div class="card">
-
-<input
-id="traceHost"
-placeholder="google.com">
-
-<button onclick="runTraceroute()">
-
-Start Traceroute
-
-</button>
-
-<div
-id="traceResult"
-class="result">
-
-</div>
-
-</div>
-
-</section>
-
-<section id="topology">
-
-<h2>🗺️ Network Topology</h2>
-
-<div class="card">
-
-<canvas
-id="topologyCanvas"
-width="900"
-height="450">
-</canvas>
-
-<br><br>
-
-<button onclick="drawTopology()">
-Draw Topology
-<br><br>
-<button onclick="addDevice('router')">
-➕ Router
-</button>
-
-<button onclick="addDevice('switch')">
-➕ Switch
-</button>
-
-<button onclick="addDevice('pc')">
-➕ PC
-</button>
-
-<button onclick="addDevice('server')">
-➕ Server
-</button>
-
-<button onclick="clearTopology()">
-🗑 Clear
-
-<button onclick="saveTopology()">
-💾 Save
-</button>
-
-<button onclick="loadTopology()">
-📂 Load
-</button>
-
-<button onclick="exportTopology()">
-📤 Export PNG
-</button>
-
-<button onclick="toggleConnectMode()">
-🔗 Connect Mode
-</button>
-
-</button>
-</button>
-
-</div>
-
-</section>
-
-<section id="whois">
-
-<h2>🌍 WHOIS Lookup</h2>
-
-<div class="card">
-
-<input
-id="whoisDomain"
-placeholder="example.com">
-
-<button onclick="whoisLookup()">
-
-Lookup
-
-</button>
-
-<div
-id="whoisResult"
-class="result">
-
-</div>
-
-</div>
-
-</section>
-
-<section id="dns">
-
-<h2>🌐 DNS Lookup</h2>
-
-<div class="card">
-
-<input
-id="dnsDomain"
-placeholder="google.com">
-
-<button onclick="dnsLookupPro()">
-Lookup DNS
-</button>
-
-<div
-id="dnsResult"
-class="result">
-</div>
-
-</div>
-
-</section>
-
-<section id="portscanner">
-
-<h2>📡 Port Scanner</h2>
-
-<div class="card">
-
-<input
-id="scanIP"
-placeholder="192.168.1.1">
-
-<button onclick="scanPorts()">
-
-Scan
-
-</button>
-
-<div
-id="scanPortResult"
-class="result">
-
-</div>
-
-</div>
-
-</section>
-
-<section id="terminal-section">
-
-<h2>💻 Linux Terminal</h2>
-
-<div id="terminal"></div>
-
-<input
-id="terminal-input"
-placeholder="Ketik command...">
-
-</section>
-
-<section id="about">
-
-<h2>ℹ️ About</h2>
-
-<div class="card">
-
-<h3>NetForge</h3>
-
-<p>
-
-Network Dashboard & Networking Tools
-
-</p>
-
-<br>
-
-<p>
-
-<b>Developer</b>
-
-<br><br>
-
-MUSYAFFA HANIF SUNNI
-
-<br>
-
-TJKT
-
-<br>
-
-SMKN 1 Adiwerna
-
-</p>
-
-<br>
-
-<p>
-
-Repository:
-
-<br>
-
-<a href="https://github.com/LyuuZhnn/NetForge/" target="_blank">
-
-https://github.com/LyuuZhnn/NetForge/
-
-</a>
-
-</p>
-
-</div>
-
-</section>
-
-</div>
-
-<script src="script.js"></script>
-
-<div id="toastContainer"></div>
-
-<!-- NETFORGE SETTINGS MODAL -->
-
+<!-- SETTINGS MODAL -->
 <div id="settingsModal" class="nf-modal">
 
-  <div class="nf-settings">
+  <div class="nf-modal-box">
 
-    <div class="nf-settings-header">
-      <div>
-        <small>NETFORGE CONFIGURATION</small>
-        <h2>Settings</h2>
-      </div>
+    <button class="nf-modal-close" onclick="closeSettings()">×</button>
 
-      <button class="nf-modal-close" onclick="closeSettings()">
-        <i class="fa-solid fa-xmark"></i>
+    <h2>Settings</h2>
+
+    <div class="settings-item">
+      <strong>Theme</strong>
+      <button onclick="toggleTheme(); showToast('Theme updated')">
+        Toggle Theme
       </button>
     </div>
 
-    <div class="nf-settings-body">
-
-      <div class="nf-setting-item">
-        <div>
-          <strong>Theme</strong>
-          <small>Switch dashboard appearance</small>
-        </div>
-
-        <button onclick="toggleTheme(); showToast('Theme updated')">
-          <i class="fa-solid fa-moon"></i>
-          Toggle
-        </button>
-      </div>
-
-      <div class="nf-setting-item">
-        <div>
-          <strong>Sidebar</strong>
-          <small>Collapse or expand navigation</small>
-        </div>
-
-        <button onclick="toggleSidebar(); showToast('Sidebar updated')">
-          <i class="fa-solid fa-bars"></i>
-          Toggle
-        </button>
-      </div>
-
-      <div class="nf-setting-item">
-        <div>
-          <strong>Topology</strong>
-          <small>Clear current network topology</small>
-        </div>
-
-        <button class="danger" onclick="clearTopology(); showToast('Topology cleared','error')">
-          <i class="fa-solid fa-trash"></i>
-          Clear
-        </button>
-      </div>
-
+    <div class="settings-item">
+      <strong>Sidebar</strong>
+      <button onclick="toggleSidebar(); showToast('Sidebar updated')">
+        Toggle Sidebar
+      </button>
     </div>
 
-    <div class="nf-settings-footer">
-      <button onclick="closeSettings()">Close</button>
+    <div class="settings-item">
+      <strong>Topology</strong>
+      <button class="danger" onclick="clearTopology(); showToast('Topology cleared','error')">
+        Clear Topology
+      </button>
     </div>
+
+    <button class="primary-btn" onclick="closeSettings()">Close</button>
 
   </div>
 
 </div>
 
-</body>
 
+<!-- LOGIN MODAL -->
 <div id="loginModal" class="login-modal">
+
   <div class="login-box">
+
     <h2>NetForge Login</h2>
 
-    <input
-      type="text"
-      id="username"
-      placeholder="Masukkan Nama">
+    <input id="username" placeholder="Username">
 
     <button onclick="loginNetForge()">
       Login
     </button>
+
   </div>
+
 </div>
 
-</html>
 
+<!-- TOAST -->
+<div id="toastContainer"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
