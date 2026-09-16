@@ -4801,3 +4801,107 @@ section#dashboard > p#welcomeClass::after{
 }
 
 
+
+/* =========================================
+   FIX — DASHBOARD WELCOME STACK
+   ========================================= */
+
+section#dashboard > #welcomeName{
+    display:block !important;
+    position:relative !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    margin:22px 0 8px !important;
+    padding:0 !important;
+
+    color:#ffffff !important;
+    font-size:28px !important;
+    font-weight:800 !important;
+    line-height:1.25 !important;
+}
+
+section#dashboard > #welcomeClass,
+section#dashboard > #welcomeRole{
+    display:inline-block !important;
+    position:relative !important;
+
+    width:auto !important;
+    height:auto !important;
+
+    margin:0 !important;
+    padding:0 !important;
+
+    color:#9fb5c7 !important;
+    font-size:12px !important;
+    line-height:20px !important;
+}
+
+section#dashboard > #welcomeClass{
+    margin-right:18px !important;
+}
+
+section#dashboard > #welcomeClass::after{
+    content:"";
+    display:inline-block;
+
+    width:5px;
+    height:5px;
+
+    margin-left:14px;
+    margin-bottom:1px;
+
+    border-radius:50%;
+    background:#00d9ff;
+}
+
+section#dashboard > #clock{
+    display:block !important;
+    position:relative !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    margin:18px 0 5px !important;
+    padding:0 !important;
+
+    color:#00e5ff !important;
+    font-size:32px !important;
+    font-weight:800 !important;
+    line-height:1.15 !important;
+    letter-spacing:1px !important;
+
+    font-variant-numeric:tabular-nums !important;
+}
+
+section#dashboard > #today{
+    display:block !important;
+    position:relative !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    margin:0 0 20px !important;
+    padding:0 !important;
+
+    color:#718ba1 !important;
+    font-size:12px !important;
+    line-height:20px !important;
+}
+
+section#dashboard > .grid{
+    clear:both !important;
+}
+
+@media(max-width:600px){
+
+    section#dashboard > #welcomeName{
+        font-size:24px !important;
+    }
+
+    section#dashboard > #clock{
+        font-size:28px !important;
+    }
+
+}
