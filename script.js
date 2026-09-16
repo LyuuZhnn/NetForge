@@ -1952,3 +1952,26 @@ function searchNetForge(value){
     "error"
   );
 }
+
+
+/* =================================
+   NETFORGE CTRL + K SEARCH
+   ================================= */
+
+document.addEventListener("keydown", function(e){
+
+  if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k"){
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const search = document.querySelector(".nf-topbar-search input");
+
+    if(search){
+      search.focus();
+      search.select();
+    }
+
+  }
+
+});

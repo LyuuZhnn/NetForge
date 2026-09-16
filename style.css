@@ -3864,3 +3864,940 @@ body{
 #dashboard .grid .card h1{
   font-size:24px !important;
 }
+
+
+/* =========================================
+   NETFORGE V3.1 — FINAL VISUAL OVERRIDE
+   ========================================= */
+
+body{
+  background:#020914 !important;
+  color:#eaf4ff !important;
+}
+
+/* CONTENT AREA */
+.main{
+  background:#020914 !important;
+  padding:0 26px 40px !important;
+}
+
+/* TOPBAR */
+.nf-topbar{
+  background:#030d19 !important;
+  border-bottom:1px solid #102d45 !important;
+  height:68px !important;
+}
+
+/* DASHBOARD */
+#dashboard{
+  padding-top:22px !important;
+}
+
+/* HERO */
+#dashboard .nf-hero{
+  background:#071a2c !important;
+  border:1px solid #174766 !important;
+  border-radius:14px !important;
+  min-height:145px !important;
+  padding:25px !important;
+  box-shadow:0 8px 25px rgba(0,0,0,.22) !important;
+}
+
+#dashboard .nf-hero h1{
+  color:#ffffff !important;
+  font-size:26px !important;
+}
+
+#dashboard .nf-hero p{
+  color:#91aac0 !important;
+}
+
+/* SECTION */
+#dashboard .nf-section-title{
+  margin-top:25px !important;
+  margin-bottom:10px !important;
+}
+
+#dashboard .nf-section-title h2{
+  color:#ffffff !important;
+}
+
+/* STAT CARDS */
+#dashboard > .grid{
+  display:grid !important;
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  gap:12px !important;
+  margin:12px 0 16px !important;
+}
+
+#dashboard > .grid .card{
+  min-height:108px !important;
+  padding:16px !important;
+
+  background:#071827 !important;
+  border:1px solid #123b57 !important;
+  border-radius:11px !important;
+
+  box-shadow:0 5px 16px rgba(0,0,0,.18) !important;
+}
+
+#dashboard > .grid .card h3{
+  color:#7892aa !important;
+  font-size:10px !important;
+  text-transform:uppercase !important;
+  letter-spacing:.5px !important;
+}
+
+#dashboard > .grid .card h1{
+  color:#ffffff !important;
+  font-size:23px !important;
+  margin-top:10px !important;
+}
+
+/* DIFFERENT ACCENTS */
+#dashboard > .grid .card:nth-child(1){
+  border-top:2px solid #2494ff !important;
+}
+
+#dashboard > .grid .card:nth-child(2){
+  border-top:2px solid #8d5cff !important;
+}
+
+#dashboard > .grid .card:nth-child(3){
+  border-top:2px solid #00d9ff !important;
+}
+
+#dashboard > .grid .card:nth-child(4){
+  border-top:2px solid #00d9a0 !important;
+}
+
+#dashboard > .grid .card:nth-child(5){
+  border-top:2px solid #ffd34d !important;
+}
+
+#dashboard > .grid .card:nth-child(6){
+  border-top:2px solid #00d9a0 !important;
+}
+
+/* PANELS */
+#dashboard .nf-panel{
+  background:#061727 !important;
+  border:1px solid #123b57 !important;
+  border-radius:12px !important;
+  box-shadow:0 5px 17px rgba(0,0,0,.18) !important;
+}
+
+/* PANEL TITLES */
+#dashboard .nf-panel-header h2{
+  color:#ffffff !important;
+  font-size:15px !important;
+}
+
+#dashboard .nf-panel-header small{
+  color:#58758e !important;
+  font-size:8px !important;
+}
+
+/* LOWER PANELS */
+#dashboard .nf-lower-dashboard{
+  gap:12px !important;
+  margin-top:12px !important;
+}
+
+/* REMOVE HEAVY EFFECTS */
+#dashboard .nf-panel,
+#dashboard .nf-hero,
+#dashboard .card{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+/* DESKTOP */
+@media(min-width:1200px){
+
+  #dashboard > .grid .card{
+    min-width:0 !important;
+  }
+
+}
+
+/* TABLET */
+@media(max-width:1100px){
+
+  #dashboard > .grid{
+    grid-template-columns:repeat(3,1fr) !important;
+  }
+
+}
+
+/* MOBILE */
+@media(max-width:650px){
+
+  .main{
+    padding:0 12px 30px !important;
+  }
+
+  #dashboard > .grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+
+}
+
+@media(max-width:430px){
+
+  #dashboard > .grid{
+    grid-template-columns:1fr !important;
+  }
+
+}
+
+
+/* =================================
+   NETFORGE TOPBAR SEARCH
+   ================================= */
+
+.nf-topbar-search{
+  flex:1;
+  max-width:510px;
+  height:38px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:0 10px;
+
+  background:#061a2d;
+  border:1px solid #154365;
+  border-radius:8px;
+}
+
+.nf-topbar-search > i{
+  color:#67b5e0;
+  font-size:13px;
+}
+
+.nf-topbar-search input{
+  flex:1;
+  min-width:0;
+
+  border:0;
+  outline:0;
+
+  background:transparent;
+  color:#ffffff;
+
+  font-size:12px;
+}
+
+.nf-topbar-search input::placeholder{
+  color:#66839b;
+}
+
+.nf-topbar-search kbd{
+  padding:4px 8px;
+
+  border-radius:5px;
+
+  background:#092442;
+  border:1px solid #123d5d;
+
+  color:#7ea8c5;
+  font-size:9px;
+}
+
+.nf-topbar-actions{
+  margin-left:auto !important;
+  flex-shrink:0 !important;
+}
+
+@media(max-width:850px){
+
+  .nf-topbar{
+    gap:12px !important;
+    padding:0 14px !important;
+  }
+
+  .nf-topbar-search{
+    max-width:none;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .nf-topbar-search{
+    display:none;
+  }
+
+}
+
+
+/* =========================================
+   NETFORGE V3.1 — REFERENCE PANEL POLISH
+   ========================================= */
+
+/* PANEL GRID */
+#dashboard .nf-reference-panels{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,2fr) minmax(240px,1fr) minmax(240px,1fr) !important;
+  gap:14px !important;
+  margin-top:14px !important;
+}
+
+/* ALL PANELS */
+#dashboard .nf-reference-panels .nf-panel,
+#dashboard .nf-lower-dashboard .nf-panel{
+  background:#071827 !important;
+  border:1px solid #143b57 !important;
+  border-radius:12px !important;
+  box-shadow:0 6px 20px rgba(0,0,0,.20) !important;
+  overflow:hidden !important;
+}
+
+/* PANEL HEADER */
+#dashboard .nf-panel-header{
+  min-height:34px;
+  margin-bottom:12px !important;
+}
+
+#dashboard .nf-panel-header h2{
+  color:#f5f9ff !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+}
+
+#dashboard .nf-panel-header h2 i{
+  color:#00d9ff !important;
+}
+
+#dashboard .nf-panel-header small{
+  color:#66849d !important;
+}
+
+/* LIVE BADGE */
+#dashboard .nf-panel-badge{
+  color:#00d9ff !important;
+  background:#062f42 !important;
+  border:1px solid #096887 !important;
+  border-radius:20px !important;
+  padding:4px 8px !important;
+  font-size:8px !important;
+}
+
+#dashboard .nf-panel-badge.green{
+  color:#00e6a0 !important;
+  background:#06362d !important;
+  border-color:#08765f !important;
+}
+
+/* TRAFFIC CHART */
+#dashboard .nf-traffic-panel{
+  min-height:235px !important;
+}
+
+#dashboard .nf-traffic-chart{
+  height:165px !important;
+  margin-top:4px;
+  border-bottom:1px solid #12344b !important;
+}
+
+#dashboard .nf-chart-lines span{
+  border-color:rgba(80,150,190,.12) !important;
+}
+
+#dashboard .nf-chart-bars i{
+  background:linear-gradient(to top,#0878b5,#00d9ff) !important;
+  opacity:.82 !important;
+  box-shadow:0 -2px 8px rgba(0,217,255,.12);
+}
+
+#dashboard .nf-chart-legend{
+  color:#8099ae !important;
+  font-size:10px !important;
+}
+
+/* QUICK ACTIONS */
+#dashboard .nf-reference-actions{
+  gap:6px !important;
+}
+
+#dashboard .nf-reference-actions a{
+  min-height:39px !important;
+  padding:7px 8px !important;
+
+  background:#081e31 !important;
+  border:1px solid transparent !important;
+  border-radius:8px !important;
+
+  transition:background .18s ease,border-color .18s ease !important;
+}
+
+#dashboard .nf-reference-actions a:hover{
+  background:#0b2940 !important;
+  border-color:#175171 !important;
+}
+
+#dashboard .nf-reference-actions a > i:first-child{
+  background:#073550 !important;
+  color:#00d9ff !important;
+}
+
+/* RECENT ACTIVITY */
+#dashboard .nf-recent-item{
+  padding:10px 0 !important;
+  border-bottom:1px solid #103149 !important;
+}
+
+#dashboard .nf-recent-item strong{
+  color:#edf6ff !important;
+}
+
+#dashboard .nf-recent-item small{
+  color:#718ba1 !important;
+}
+
+/* LOWER GRID */
+#dashboard .nf-lower-dashboard{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr) !important;
+  gap:14px !important;
+  margin-top:14px !important;
+}
+
+/* SYSTEM BARS */
+#dashboard .nf-system-row{
+  margin:13px 0 !important;
+}
+
+#dashboard .nf-system-row > div{
+  background:#0b293d !important;
+}
+
+#dashboard .nf-system-row b span{
+  background:#00c4ee !important;
+}
+
+/* NETWORK STATUS */
+#dashboard .nf-network-status > div{
+  padding:10px 0 !important;
+  border-bottom:1px solid #103149 !important;
+}
+
+#dashboard .nf-network-status strong{
+  color:#d5e8f8 !important;
+}
+
+/* TOP TOOLS */
+#dashboard .nf-top-tools a{
+  padding:8px 0 !important;
+  border-bottom:1px solid #103149 !important;
+}
+
+#dashboard .nf-top-tools strong{
+  color:#eaf4ff !important;
+}
+
+/* WHITE TEXT HIERARCHY */
+#dashboard strong,
+#dashboard h1,
+#dashboard h2,
+#dashboard h3{
+  color:#f5f9ff;
+}
+
+/* REMOVE HEAVY GPU EFFECTS */
+#dashboard .nf-panel,
+#dashboard .nf-reference-panels,
+#dashboard .nf-lower-dashboard{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+/* TABLET */
+@media(max-width:1100px){
+
+  #dashboard .nf-reference-panels{
+    grid-template-columns:1fr 1fr !important;
+  }
+
+  #dashboard .nf-traffic-panel{
+    grid-column:1 / -1 !important;
+  }
+
+  #dashboard .nf-lower-dashboard{
+    grid-template-columns:1fr 1fr !important;
+  }
+
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  #dashboard .nf-reference-panels,
+  #dashboard .nf-lower-dashboard{
+    grid-template-columns:1fr !important;
+  }
+
+  #dashboard .nf-traffic-panel{
+    grid-column:auto !important;
+  }
+
+}
+
+
+/* =========================================
+   NETFORGE V3.1 — FINAL LAYOUT ALIGNMENT
+   ========================================= */
+
+/* SIDEBAR */
+.sidebar{
+  width:230px !important;
+  background:#030d19 !important;
+  border-right:1px solid #102d45 !important;
+  box-shadow:none !important;
+}
+
+.sidebar a{
+  min-height:38px !important;
+  margin:3px 10px !important;
+  padding:9px 11px !important;
+  border-radius:8px !important;
+  color:#7893aa !important;
+  font-size:11px !important;
+}
+
+.sidebar a:hover{
+  background:#071e31 !important;
+  color:#eaf6ff !important;
+}
+
+.sidebar a.active{
+  background:#08283d !important;
+  color:#00d9ff !important;
+  box-shadow:inset 3px 0 0 #00d9ff !important;
+}
+
+.sidebar-group-title{
+  color:#4f6b83 !important;
+  margin:17px 14px 6px !important;
+  font-size:8px !important;
+}
+
+/* SIDEBAR BRAND */
+.sidebar h1{
+  color:#ffffff !important;
+  font-size:20px !important;
+  letter-spacing:.5px !important;
+}
+
+.sidebar h3{
+  color:#536f87 !important;
+  font-size:9px !important;
+}
+
+/* MAIN */
+.main{
+  margin-left:230px !important;
+  min-height:100vh !important;
+  background:#020914 !important;
+  padding:0 24px 40px !important;
+}
+
+/* TOPBAR */
+.nf-topbar{
+  position:sticky !important;
+  top:0 !important;
+  z-index:500 !important;
+
+  margin:0 -24px !important;
+  padding:0 24px !important;
+
+  background:#030d19 !important;
+  border-bottom:1px solid #102d45 !important;
+}
+
+/* TOPBAR TITLE */
+.nf-topbar-title small{
+  color:#4f7089 !important;
+  font-size:8px !important;
+  letter-spacing:1px !important;
+}
+
+.nf-topbar-title h2{
+  color:#f4f9ff !important;
+  font-size:16px !important;
+}
+
+/* STATUS */
+.nf-status{
+  color:#8ca7bb !important;
+  font-size:10px !important;
+}
+
+.nf-status span{
+  width:7px !important;
+  height:7px !important;
+  box-shadow:0 0 8px #00d9a0 !important;
+}
+
+/* USER */
+.nf-user-info strong{
+  color:#ffffff !important;
+  font-size:11px !important;
+}
+
+.nf-user-info small{
+  color:#607b92 !important;
+  font-size:8px !important;
+}
+
+.nf-avatar{
+  width:32px !important;
+  height:32px !important;
+  background:#09243a !important;
+  border:1px solid #175171 !important;
+}
+
+/* DASHBOARD WIDTH */
+#dashboard{
+  width:100% !important;
+  max-width:1400px !important;
+  margin:0 auto !important;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .sidebar{
+    width:210px !important;
+  }
+
+  .main{
+    margin-left:0 !important;
+    padding:0 14px 30px !important;
+  }
+
+  .nf-topbar{
+    margin:0 -14px !important;
+    padding:0 14px !important;
+  }
+
+}
+
+/* COLLAPSED SIDEBAR */
+.sidebar.collapsed{
+  width:75px !important;
+}
+
+.main.sidebar-collapsed{
+  margin-left:95px !important;
+}
+
+@media(max-width:768px){
+
+  .sidebar.collapsed{
+    width:75px !important;
+  }
+
+  .main.sidebar-collapsed{
+    margin-left:95px !important;
+  }
+
+}
+
+
+/* =========================================
+   NETFORGE V3.1 — REMOVE LEGACY DASHBOARD UI
+   ========================================= */
+
+/* Legacy welcome block — keep in DOM for JS,
+   but remove from visual dashboard */
+#dashboard > #welcomeName,
+#dashboard > #welcomeClass,
+#dashboard > #welcomeRole,
+#dashboard > #clock,
+#dashboard > #today{
+  display:none !important;
+}
+
+/* Legacy duplicated overview heading */
+#dashboard > .nf-section-title{
+  display:none !important;
+}
+
+/* Dashboard spacing */
+#dashboard{
+  padding-top:20px !important;
+}
+
+/* Hero directly followed by stats */
+#dashboard .nf-hero{
+  margin-bottom:14px !important;
+}
+
+/* Stats become the primary overview */
+#dashboard > .grid{
+  margin-top:0 !important;
+}
+
+/* Make traffic/dashboard panels visually connected */
+#dashboard .nf-dashboard-panels{
+  margin-top:14px !important;
+}
+
+
+/* =========================================
+   NETFORGE — HIDE OLD DASHBOARD ELEMENTS
+   ========================================= */
+
+/* Hide old V2 welcome information */
+section#dashboard > #welcomeName,
+section#dashboard > #welcomeClass,
+section#dashboard > #welcomeRole,
+section#dashboard > #clock,
+section#dashboard > #today{
+  display:none !important;
+  visibility:hidden !important;
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* Hide old overview heading */
+section#dashboard > .nf-section-title{
+  display:none !important;
+}
+
+/* Compact statistics */
+section#dashboard > .grid{
+  margin-top:12px !important;
+  margin-bottom:14px !important;
+}
+
+section#dashboard > .grid > .card{
+  min-height:105px !important;
+  padding:15px !important;
+}
+
+section#dashboard > .grid > .card h1{
+  font-size:22px !important;
+  margin:8px 0 0 !important;
+}
+
+section#dashboard > .grid > .card h3{
+  font-size:9px !important;
+  margin:0 !important;
+}
+
+/* Compact hero */
+section#dashboard > .nf-hero{
+  min-height:140px !important;
+  margin-bottom:12px !important;
+}
+
+/* Keep dashboard dense */
+section#dashboard .nf-reference-panels,
+section#dashboard .nf-lower-dashboard{
+  margin-top:12px !important;
+}
+
+
+/* =========================================
+   NETFORGE — PROFESSIONAL USER INFO
+   ========================================= */
+
+#dashboard > #welcomeName,
+#dashboard > #welcomeClass,
+#dashboard > #welcomeRole,
+#dashboard > #clock,
+#dashboard > #today{
+  display:block !important;
+  visibility:visible !important;
+  height:auto !important;
+}
+
+/* Welcome */
+#dashboard > #welcomeName{
+  margin:18px 0 5px !important;
+  padding:0 !important;
+
+  color:#f7fbff !important;
+  font-size:30px !important;
+  font-weight:750 !important;
+  letter-spacing:-.6px !important;
+}
+
+/* Class */
+#dashboard > #welcomeClass{
+  display:inline-block !important;
+  margin:0 14px 0 0 !important;
+
+  color:#9db5c9 !important;
+  font-size:12px !important;
+}
+
+/* Role */
+#dashboard > #welcomeRole{
+  display:inline-block !important;
+  margin:0 !important;
+
+  color:#9db5c9 !important;
+  font-size:12px !important;
+}
+
+/* Small separation between class and role */
+#dashboard > #welcomeClass::after{
+  content:"";
+  display:inline-block;
+
+  width:5px;
+  height:5px;
+
+  margin-left:14px;
+
+  border-radius:50%;
+  background:#00d9ff;
+  box-shadow:0 0 7px rgba(0,217,255,.5);
+}
+
+/* Clock */
+#dashboard > #clock{
+  margin:17px 0 2px !important;
+
+  color:#00e5ff !important;
+  font-size:32px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  letter-spacing:1px !important;
+  font-variant-numeric:tabular-nums;
+}
+
+/* Date */
+#dashboard > #today{
+  margin:7px 0 17px !important;
+
+  color:#718da5 !important;
+  font-size:12px !important;
+  font-weight:500 !important;
+}
+
+/* Keep the stats close to the user info */
+#dashboard > .grid{
+  margin-top:0 !important;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+  #dashboard > #welcomeName{
+    font-size:25px !important;
+  }
+
+  #dashboard > #clock{
+    font-size:28px !important;
+  }
+
+  #dashboard > #welcomeClass,
+  #dashboard > #welcomeRole,
+  #dashboard > #today{
+    font-size:11px !important;
+  }
+
+}
+
+
+/* =========================================
+   NETFORGE — FINAL WELCOME INFO OVERRIDE
+   ========================================= */
+
+section#dashboard > h2#welcomeName{
+  display:block !important;
+  visibility:visible !important;
+
+  margin:18px 0 4px !important;
+  padding:0 !important;
+
+  color:#ffffff !important;
+  font-size:28px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  letter-spacing:-.5px !important;
+}
+
+section#dashboard > p#welcomeClass,
+section#dashboard > p#welcomeRole{
+  display:inline-block !important;
+  visibility:visible !important;
+
+  width:auto !important;
+  height:auto !important;
+
+  margin:0 !important;
+  padding:0 !important;
+
+  color:#9eb4c7 !important;
+  font-size:12px !important;
+  line-height:20px !important;
+}
+
+section#dashboard > p#welcomeClass{
+  margin-right:16px !important;
+}
+
+section#dashboard > div#clock{
+  display:block !important;
+  visibility:visible !important;
+
+  margin:15px 0 3px !important;
+  padding:0 !important;
+
+  color:#00d9ff !important;
+  font-size:32px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+
+  font-variant-numeric:tabular-nums !important;
+}
+
+section#dashboard > div#today{
+  display:block !important;
+  visibility:visible !important;
+
+  margin:7px 0 16px !important;
+  padding:0 !important;
+
+  color:#6f8ba2 !important;
+  font-size:12px !important;
+  line-height:18px !important;
+}
+
+/* separator between class and role */
+section#dashboard > p#welcomeClass::after{
+  content:"";
+  display:inline-block;
+
+  width:5px;
+  height:5px;
+
+  margin:0 0 2px 16px;
+
+  border-radius:50%;
+  background:#00d9ff;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  section#dashboard > h2#welcomeName{
+    font-size:24px !important;
+  }
+
+  section#dashboard > div#clock{
+    font-size:28px !important;
+  }
+
+}
+
+
