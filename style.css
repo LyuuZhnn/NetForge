@@ -2949,3 +2949,86 @@ a:hover{
     -webkit-backdrop-filter:blur(6px);
   }
 }
+
+/* ===== NETFORGE PERFORMANCE MODE ===== */
+
+/* Kurangi efek blur berat, tetap mempertahankan warna */
+.card,
+.panel,
+.tool-card,
+.nf-hero{
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+/* Glow tetap ada, tetapi tidak bertumpuk terlalu banyak */
+.card:hover,
+.panel:hover,
+.tool-card:hover{
+  box-shadow:
+    0 0 18px rgba(0,245,255,.14),
+    inset 0 0 18px rgba(0,245,255,.035);
+}
+
+/* Hero tetap glowing */
+.nf-hero{
+  box-shadow:
+    0 0 24px rgba(0,245,255,.12),
+    0 0 42px rgba(168,85,255,.08);
+}
+
+/* Hentikan animasi ambient yang terus bekerja */
+.main::after{
+  animation:none !important;
+}
+
+/* Scan line tetap terlihat, tapi lebih ringan */
+.nf-hero::after,
+.card::after,
+.panel::after,
+.tool-card::after{
+  animation:none !important;
+  opacity:.18;
+}
+
+/* Hindari transform berlebihan saat hover */
+.card,
+.panel,
+.tool-card{
+  will-change:auto;
+}
+
+.card:hover,
+.panel:hover,
+.tool-card:hover{
+  transform:translateY(-2px);
+}
+
+/* Kurangi compositing pada elemen besar */
+.topology-panel,
+.nf-topbar,
+.sidebar{
+  will-change:auto;
+}
+
+/* Background tetap sama, tetapi tidak membuat layer tambahan */
+body{
+  background-attachment:scroll;
+}
+
+/* Mobile: prioritaskan FPS */
+@media(max-width:700px){
+  .card:hover,
+  .panel:hover,
+  .tool-card:hover{
+    transform:none;
+  }
+
+  .card,
+  .panel,
+  .tool-card,
+  .nf-hero{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+}
