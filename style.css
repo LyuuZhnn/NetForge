@@ -3032,3 +3032,12 @@ body{
     -webkit-backdrop-filter:none !important;
   }
 }
+
+/* ===== REMOVE MOVING SCAN LINES ===== */
+.nf-hero::after,
+.card::after,
+.panel::after,
+.tool-card::after{
+  display:none !important;
+}
+
