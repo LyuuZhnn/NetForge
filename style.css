@@ -2312,3 +2312,218 @@ body{
     url("Background.png") center center / cover fixed no-repeat;
   background-color:#020914;
 }
+
+/* ===== NETFORGE MEGA NEON ===== */
+
+:root{
+  --mega-cyan:#00f5ff;
+  --mega-blue:#2879ff;
+  --mega-purple:#a855ff;
+  --mega-pink:#ff36d1;
+  --mega-green:#00f59a;
+  --mega-orange:#ffb000;
+  --mega-red:#ff4567;
+}
+
+/* PANEL COLOR BOOST */
+.card,
+.panel,
+.tool-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7,24,39,.94),
+      rgba(8,18,38,.86)
+    );
+  border:1px solid rgba(0,245,255,.22);
+  box-shadow:
+    0 0 18px rgba(0,245,255,.07),
+    inset 0 0 25px rgba(40,121,255,.035);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.card::before,
+.panel::before,
+.tool-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--mega-cyan),
+    var(--mega-purple),
+    var(--mega-pink),
+    transparent
+  );
+  opacity:.8;
+}
+
+.card:hover,
+.panel:hover,
+.tool-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,245,255,.48);
+  box-shadow:
+    0 0 28px rgba(0,245,255,.13),
+    0 0 55px rgba(168,85,255,.08),
+    inset 0 0 30px rgba(0,245,255,.04);
+}
+
+/* SECTION TITLE */
+.section-title h2{
+  text-shadow:
+    0 0 8px rgba(0,245,255,.5),
+    0 0 22px rgba(168,85,255,.22);
+}
+
+.section-title span{
+  color:var(--mega-cyan);
+  text-shadow:0 0 12px rgba(0,245,255,.55);
+}
+
+/* STAT CARDS */
+.stat-card:nth-child(1){
+  border-color:rgba(0,245,255,.35);
+  box-shadow:0 0 22px rgba(0,245,255,.10);
+}
+
+.stat-card:nth-child(2){
+  border-color:rgba(168,85,255,.35);
+  box-shadow:0 0 22px rgba(168,85,255,.10);
+}
+
+.stat-card:nth-child(3){
+  border-color:rgba(40,121,255,.35);
+  box-shadow:0 0 22px rgba(40,121,255,.10);
+}
+
+.stat-card:nth-child(4){
+  border-color:rgba(0,245,154,.35);
+  box-shadow:0 0 22px rgba(0,245,154,.10);
+}
+
+.stat-card:nth-child(5){
+  border-color:rgba(255,176,0,.35);
+  box-shadow:0 0 22px rgba(255,176,0,.10);
+}
+
+.stat-card:nth-child(6){
+  border-color:rgba(255,69,103,.35);
+  box-shadow:0 0 22px rgba(255,69,103,.10);
+}
+
+/* STAT NUMBERS */
+.stat-card h1{
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 20px currentColor;
+}
+
+.stat-card:nth-child(1) h1{color:var(--mega-cyan);}
+.stat-card:nth-child(2) h1{color:var(--mega-purple);}
+.stat-card:nth-child(3) h1{color:var(--mega-blue);}
+.stat-card:nth-child(4) h1{color:var(--mega-green);}
+.stat-card:nth-child(5) h1{color:var(--mega-orange);}
+.stat-card:nth-child(6) h1{color:var(--mega-green);}
+
+/* ICON GLOW */
+.stat-icon{
+  filter:drop-shadow(0 0 8px currentColor);
+}
+
+/* BUTTONS */
+button{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(0,245,255,.38);
+  box-shadow:
+    0 0 10px rgba(0,245,255,.08),
+    inset 0 0 12px rgba(0,245,255,.03);
+}
+
+button:hover{
+  border-color:var(--mega-cyan);
+  box-shadow:
+    0 0 14px rgba(0,245,255,.25),
+    0 0 30px rgba(168,85,255,.12);
+}
+
+/* LINKS */
+a{
+  text-shadow:0 0 8px rgba(0,245,255,.25);
+}
+
+a:hover{
+  text-shadow:
+    0 0 8px rgba(0,245,255,.65),
+    0 0 18px rgba(168,85,255,.35);
+}
+
+/* STATUS */
+.status-online,
+.online,
+#serverStatus{
+  text-shadow:
+    0 0 8px rgba(0,245,154,.75),
+    0 0 18px rgba(0,245,154,.35);
+}
+
+/* TOPOLOGY */
+.topology-panel{
+  box-shadow:
+    0 0 25px rgba(0,245,255,.10),
+    0 0 50px rgba(168,85,255,.06);
+}
+
+.topology-panel canvas{
+  box-shadow:
+    inset 0 0 35px rgba(0,245,255,.08),
+    0 0 18px rgba(0,245,255,.08);
+}
+
+/* HERO */
+.nf-hero{
+  box-shadow:
+    0 0 35px rgba(0,245,255,.10),
+    0 0 70px rgba(168,85,255,.07),
+    inset 0 0 40px rgba(40,121,255,.04);
+}
+
+.nf-hero h1{
+  text-shadow:
+    0 0 10px rgba(0,245,255,.45),
+    0 0 28px rgba(168,85,255,.25);
+}
+
+/* DEVELOPER CREDIT */
+.developer-credit{
+  border-color:rgba(168,85,255,.35);
+  box-shadow:
+    0 0 22px rgba(168,85,255,.10),
+    inset 0 0 22px rgba(0,245,255,.035);
+}
+
+.developer-credit strong{
+  text-shadow:
+    0 0 8px rgba(0,245,255,.35);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    180deg,
+    var(--mega-cyan),
+    var(--mega-purple),
+    var(--mega-pink)
+  );
+  box-shadow:0 0 10px rgba(0,245,255,.5);
+}
