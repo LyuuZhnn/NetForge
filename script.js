@@ -309,7 +309,7 @@ pingData.push(rand(2,35));
 
 liveChart.update();
 
-},1000);
+},2500);
 
 }
 
@@ -415,7 +415,7 @@ downloadData.push(rand(30,250));
 
 trafficChart.update();
 
-},1000);
+},2500);
 
 }
 
