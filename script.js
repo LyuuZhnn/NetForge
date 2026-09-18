@@ -2341,3 +2341,54 @@ document.addEventListener("keydown", function(e){
   );
 
 })();
+
+/* ===== MOBILE SIDEBAR FIX ===== */
+
+window.toggleSidebar = function(){
+
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main");
+
+  if(!sidebar || !main) return;
+
+  const isMobile = window.matchMedia("(max-width:700px)").matches;
+
+  if(isMobile){
+
+    sidebar.classList.toggle("mobile-open");
+
+    /* Mobile tidak menggunakan mode collapsed */
+    sidebar.classList.remove("collapsed");
+    main.classList.remove("sidebar-collapsed");
+
+    return;
+  }
+
+  /* Desktop: pertahankan sistem lama */
+  sidebar.classList.toggle("collapsed");
+  main.classList.toggle("sidebar-collapsed");
+
+  localStorage.setItem(
+    "netforge_sidebar",
+    sidebar.classList.contains("collapsed")
+  );
+
+};
+
+/* Pastikan status desktop tidak mengganggu sidebar mobile */
+window.addEventListener("load", function(){
+
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main");
+
+  if(!sidebar || !main) return;
+
+  if(window.matchMedia("(max-width:700px)").matches){
+
+    sidebar.classList.remove("collapsed");
+    main.classList.remove("sidebar-collapsed");
+    sidebar.classList.remove("mobile-open");
+
+  }
+
+});

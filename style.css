@@ -4003,3 +4003,68 @@ body[data-dashboard="system"]
   }
 
 }
+
+/* ===== MOBILE SIDEBAR UI FIX ===== */
+
+@media(max-width:700px){
+
+  .sidebar{
+    width:245px !important;
+    z-index:1200;
+    transition:transform .25s ease;
+    box-shadow:
+      8px 0 30px rgba(0,0,0,.38),
+      0 0 25px rgba(0,245,255,.08);
+  }
+
+  .sidebar.mobile-open{
+    transform:translateX(0) !important;
+  }
+
+  .sidebar:not(.mobile-open){
+    transform:translateX(-100%) !important;
+  }
+
+  .nf-mobile-menu{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    width:38px;
+    height:38px;
+
+    flex-shrink:0;
+
+    border:1px solid rgba(0,245,255,.28);
+    border-radius:10px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(0,245,255,.09),
+        rgba(168,85,255,.08)
+      );
+
+    color:#00f5ff;
+
+    font-size:20px;
+    line-height:1;
+
+    box-shadow:
+      0 0 12px rgba(0,245,255,.08);
+
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .nf-mobile-menu:active{
+    transform:scale(.96);
+  }
+
+  /* Workspace tetap normal di mobile */
+  .nf-dashboard-nav{
+    display:block !important;
+  }
+
+}
