@@ -1952,3 +1952,392 @@ document.addEventListener("keydown", function(e){
   }
 
 });
+
+/* =========================================
+   NETFORGE 4 DASHBOARDS
+   ========================================= */
+
+(function(){
+
+  const groups = {
+
+    command: {
+      title: "Command Center",
+      kicker: "DASHBOARD 01 • COMMAND CENTER",
+      subtitle: "Monitoring server dan kondisi jaringan dalam satu ruang kontrol.",
+      color: "cyan",
+      sections: ["dashboard","monitor"]
+    },
+
+    lab: {
+      title: "Network Lab",
+      kicker: "DASHBOARD 02 • NETWORK LAB",
+      subtitle: "Kalkulator, subnetting, routing, dan analisis jaringan.",
+      color: "purple",
+      sections: ["tools","ipv6","vlsm","routing","traceroute"]
+    },
+
+    operations: {
+      title: "Network Operations",
+      kicker: "DASHBOARD 03 • NETWORK OPERATIONS",
+      subtitle: "Topology builder dan utility pemeriksaan jaringan.",
+      color: "pink",
+      sections: ["topology","whois","dns","portscanner"]
+    },
+
+    system: {
+      title: "Terminal & Info",
+      kicker: "DASHBOARD 04 • TERMINAL & INFO",
+      subtitle: "Terminal Linux simulator, informasi sistem, dan tentang NetForge.",
+      color: "green",
+      sections: ["terminal-section","about"]
+    }
+
+  };
+
+  const sectionToGroup = {};
+
+  Object.entries(groups).forEach(([name, group])=>{
+    group.sections.forEach(sectionId=>{
+      sectionToGroup[sectionId] = name;
+    });
+  });
+
+  function ensureDashboardNav(){
+
+    const sidebar = document.querySelector(".sidebar");
+    const brand = sidebar ? sidebar.querySelector("h1") : null;
+
+    if(
+      !sidebar ||
+      !brand ||
+      document.getElementById("nfDashboardNav")
+    ){
+      return;
+    }
+
+    const nav = document.createElement("div");
+
+    nav.id = "nfDashboardNav";
+    nav.className = "nf-dashboard-nav";
+
+    nav.innerHTML = `
+
+      <div class="nf-dashboard-nav-label">
+        WORKSPACES
+      </div>
+
+      <a href="#dashboard" data-dashboard="command">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>
+          <strong>Command Center</strong>
+          <small>Monitor & status</small>
+        </span>
+      </a>
+
+      <a href="#tools" data-dashboard="lab">
+        <i class="fa-solid fa-flask"></i>
+        <span>
+          <strong>Network Lab</strong>
+          <small>Tools & simulators</small>
+        </span>
+      </a>
+
+      <a href="#topology" data-dashboard="operations">
+        <i class="fa-solid fa-sitemap"></i>
+        <span>
+          <strong>Network Ops</strong>
+          <small>Topology & utilities</small>
+        </span>
+      </a>
+
+      <a href="#terminal-section" data-dashboard="system">
+        <i class="fa-solid fa-terminal"></i>
+        <span>
+          <strong>Terminal & Info</strong>
+          <small>CLI & information</small>
+        </span>
+      </a>
+
+    `;
+
+    brand.insertAdjacentElement("afterend", nav);
+
+    nav.querySelectorAll("a[data-dashboard]").forEach(link=>{
+
+      link.addEventListener("click", event=>{
+
+        event.preventDefault();
+
+        const name = link.dataset.dashboard;
+        const target = groups[name].sections[0];
+
+        switchDashboard(name, target, true);
+
+      });
+
+    });
+
+  }
+
+  function ensureDashboardBanner(){
+
+    const main = document.querySelector(".main");
+    const topbar = main ? main.querySelector(".nf-topbar") : null;
+
+    if(
+      !main ||
+      !topbar ||
+      document.getElementById("nfDashboardBanner")
+    ){
+      return;
+    }
+
+    const banner = document.createElement("div");
+
+    banner.id = "nfDashboardBanner";
+    banner.className = "nf-dashboard-banner";
+
+    banner.innerHTML = `
+
+      <div class="nf-dashboard-banner-main">
+
+        <span class="nf-dashboard-kicker"></span>
+
+        <h1 class="nf-dashboard-title"></h1>
+
+        <p class="nf-dashboard-subtitle"></p>
+
+      </div>
+
+      <div class="nf-dashboard-index">
+
+        <span>NETFORGE WORKSPACE</span>
+
+        <b>01 / 04</b>
+
+      </div>
+
+    `;
+
+    topbar.insertAdjacentElement("afterend", banner);
+
+  }
+
+  function updateDashboardBanner(name){
+
+    const group = groups[name];
+    const banner = document.getElementById("nfDashboardBanner");
+
+    if(!group || !banner){
+      return;
+    }
+
+    const topTitle =
+      document.querySelector(".nf-topbar-title h2");
+
+    const topKicker =
+      document.querySelector(".nf-topbar-title small");
+
+    if(topTitle){
+      topTitle.textContent = group.title;
+    }
+
+    if(topKicker){
+      topKicker.textContent = group.kicker;
+    }
+
+    document.title =
+      "NetForge • " + group.title;
+
+    banner.dataset.color = group.color;
+
+    const kicker =
+      banner.querySelector(".nf-dashboard-kicker");
+
+    const title =
+      banner.querySelector(".nf-dashboard-title");
+
+    const subtitle =
+      banner.querySelector(".nf-dashboard-subtitle");
+
+    const index =
+      banner.querySelector(".nf-dashboard-index b");
+
+    if(kicker){
+      kicker.textContent = group.kicker;
+    }
+
+    if(title){
+      title.textContent = group.title;
+    }
+
+    if(subtitle){
+      subtitle.textContent = group.subtitle;
+    }
+
+    if(index){
+      index.textContent =
+        name === "command" ? "01 / 04" :
+        name === "lab" ? "02 / 04" :
+        name === "operations" ? "03 / 04" :
+        "04 / 04";
+    }
+
+  }
+
+  function updateDashboardNav(name){
+
+    document
+      .querySelectorAll(
+        "#nfDashboardNav a[data-dashboard]"
+      )
+      .forEach(link=>{
+
+        link.classList.toggle(
+          "active",
+          link.dataset.dashboard === name
+        );
+
+      });
+
+  }
+
+  function switchDashboard(
+    name,
+    targetId,
+    updateHash
+  ){
+
+    if(!groups[name]){
+      name = "command";
+    }
+
+    const group = groups[name];
+
+    document
+      .querySelectorAll(".main > section")
+      .forEach(section=>{
+
+        const show =
+          group.sections.includes(section.id);
+
+        section.classList.toggle(
+          "nf-dashboard-hidden",
+          !show
+        );
+
+      });
+
+    document.body.dataset.dashboard = name;
+
+    localStorage.setItem(
+      "netforge_dashboard",
+      name
+    );
+
+    updateDashboardBanner(name);
+    updateDashboardNav(name);
+
+    if(updateHash && targetId){
+
+      const nextHash = "#" + targetId;
+
+      if(window.location.hash !== nextHash){
+
+        window.location.hash = targetId;
+
+      }else{
+
+        const target =
+          document.getElementById(targetId);
+
+        if(target){
+
+          const top =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            24;
+
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: "auto"
+          });
+
+        }
+
+      }
+
+    }
+
+  }
+
+  function syncDashboard(){
+
+    const hash =
+      window.location.hash.replace(/^#/,"");
+
+    const stored =
+      localStorage.getItem("netforge_dashboard");
+
+    const name =
+      sectionToGroup[hash] ||
+      (groups[hash] ? hash : null) ||
+      (groups[stored] ? stored : "command");
+
+    ensureDashboardNav();
+    ensureDashboardBanner();
+
+    const firstSection =
+      groups[name].sections[0];
+
+    switchDashboard(
+      name,
+      sectionToGroup[hash] ? hash : firstSection,
+      false
+    );
+
+    if(hash && sectionToGroup[hash]){
+
+      const target =
+        document.getElementById(hash);
+
+      if(target){
+
+        const top =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          24;
+
+        window.scrollTo({
+          top: Math.max(0, top),
+          behavior: "auto"
+        });
+
+      }
+
+    }else{
+
+      window.scrollTo({
+        top: 0,
+        behavior: "auto"
+      });
+
+    }
+
+  }
+
+  window.switchDashboard =
+    switchDashboard;
+
+  window.addEventListener(
+    "hashchange",
+    syncDashboard
+  );
+
+  window.addEventListener(
+    "load",
+    syncDashboard
+  );
+
+})();
