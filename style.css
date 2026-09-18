@@ -4068,3 +4068,355 @@ body[data-dashboard="system"]
   }
 
 }
+
+/* =========================================================
+   NETFORGE PROFESSIONAL VISUAL SYSTEM
+   ========================================================= */
+
+:root{
+  --pro-cyan:#00e5ff;
+  --pro-blue:#3d7cff;
+  --pro-purple:#9b6cff;
+  --pro-magenta:#e75cff;
+  --pro-green:#2ee6a6;
+  --pro-amber:#ffbf4a;
+  --pro-red:#ff5c75;
+
+  --pro-surface:rgba(6,18,32,.86);
+  --pro-surface-2:rgba(10,18,40,.82);
+  --pro-line:rgba(120,190,255,.16);
+}
+
+/* GLOBAL */
+body{
+  color:#eaf4ff;
+}
+
+.main{
+  max-width:100%;
+}
+
+/* TOPBAR */
+.nf-topbar{
+  border-bottom:
+    1px solid
+    var(--pro-line);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,229,255,.045),
+      rgba(61,124,255,.035),
+      rgba(155,108,255,.045)
+    ) !important;
+}
+
+/* WORKSPACE HEADER */
+.nf-dashboard-banner{
+  border:
+    1px solid
+    rgba(0,229,255,.22) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3,20,37,.90),
+      rgba(11,13,34,.88)
+    ) !important;
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.18),
+    0 0 22px rgba(0,229,255,.055);
+
+  border-radius:18px !important;
+}
+
+/* PROFESSIONAL SURFACES */
+.card,
+.panel,
+.tool-card{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(7,23,39,.91),
+      rgba(10,16,35,.88)
+    ) !important;
+
+  border:
+    1px solid
+    rgba(110,190,255,.14) !important;
+
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.16);
+
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .18s ease;
+}
+
+.card:hover,
+.panel:hover,
+.tool-card:hover{
+  border-color:
+    rgba(0,229,255,.30) !important;
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.20),
+    0 0 18px rgba(0,229,255,.055);
+
+  transform:translateY(-1px);
+}
+
+/* STAT COLORS */
+.stat-card:nth-child(1){
+  border-left:
+    3px solid
+    var(--pro-cyan) !important;
+}
+
+.stat-card:nth-child(2){
+  border-left:
+    3px solid
+    var(--pro-purple) !important;
+}
+
+.stat-card:nth-child(3){
+  border-left:
+    3px solid
+    var(--pro-blue) !important;
+}
+
+.stat-card:nth-child(4){
+  border-left:
+    3px solid
+    var(--pro-green) !important;
+}
+
+.stat-card:nth-child(5){
+  border-left:
+    3px solid
+    var(--pro-amber) !important;
+}
+
+.stat-card:nth-child(6){
+  border-left:
+    3px solid
+    var(--pro-magenta) !important;
+}
+
+/* STAT NUMBERS */
+.stat-card:nth-child(1) h1{
+  color:var(--pro-cyan) !important;
+}
+
+.stat-card:nth-child(2) h1{
+  color:var(--pro-purple) !important;
+}
+
+.stat-card:nth-child(3) h1{
+  color:var(--pro-blue) !important;
+}
+
+.stat-card:nth-child(4) h1{
+  color:var(--pro-green) !important;
+}
+
+.stat-card:nth-child(5) h1{
+  color:var(--pro-amber) !important;
+}
+
+.stat-card:nth-child(6) h1{
+  color:var(--pro-magenta) !important;
+}
+
+/* SECTION TITLE */
+.section-title{
+  margin-bottom:18px;
+}
+
+.section-title span{
+  color:
+    var(--pro-cyan) !important;
+
+  letter-spacing:2px;
+}
+
+.section-title h2{
+  color:#fff;
+  text-shadow:
+    0 0 12px
+    rgba(0,229,255,.12);
+}
+
+/* TOOL GRID */
+.tool-grid{
+  gap:16px !important;
+}
+
+.tool-card{
+  min-height:190px;
+}
+
+.tool-card h3{
+  margin-bottom:12px;
+  color:#f3f8ff;
+}
+
+/* INPUTS */
+input,
+select,
+textarea{
+  border:
+    1px solid
+    rgba(110,190,255,.13) !important;
+
+  background:
+    rgba(3,13,26,.70) !important;
+
+  color:#eaf4ff !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:
+    rgba(0,229,255,.48) !important;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(0,229,255,.06),
+    0 0 14px
+    rgba(0,229,255,.08);
+}
+
+/* RESULTS */
+.result{
+  margin-top:12px;
+  padding:11px 12px;
+
+  min-height:40px;
+
+  border:
+    1px solid
+    rgba(110,190,255,.11);
+
+  border-left:
+    3px solid
+    var(--pro-cyan);
+
+  border-radius:9px;
+
+  background:
+    rgba(0,10,22,.48);
+
+  color:#cfe8f7;
+
+  line-height:1.6;
+}
+
+/* WIDE TOOLS */
+.tool-card.wide{
+  border-color:
+    rgba(155,108,255,.19) !important;
+}
+
+/* BUTTONS */
+button,
+.primary-btn{
+  border-radius:9px !important;
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .18s ease;
+}
+
+button:hover,
+.primary-btn:hover{
+  box-shadow:
+    0 0 16px
+    rgba(0,229,255,.10) !important;
+}
+
+/* NETWORK STATUS */
+#dashboard .network-status{
+  border:
+    1px solid
+    rgba(46,230,166,.20) !important;
+
+  background:
+    rgba(46,230,166,.045) !important;
+}
+
+/* TOPOLOGY */
+.topology-panel{
+  border-color:
+    rgba(61,124,255,.22) !important;
+}
+
+/* TERMINAL */
+.terminal-box{
+  border:
+    1px solid
+    rgba(0,229,255,.16);
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.16);
+}
+
+/* DEVELOPER */
+.developer-credit{
+  border-color:
+    rgba(231,92,255,.22) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,229,255,.045),
+      rgba(155,108,255,.07),
+      rgba(231,92,255,.045)
+    ) !important;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .card,
+  .panel,
+  .tool-card{
+    transform:none !important;
+  }
+
+  .card:hover,
+  .panel:hover,
+  .tool-card:hover{
+    transform:none !important;
+  }
+
+  .tool-card{
+    min-height:0;
+  }
+
+  .nf-dashboard-banner{
+    border-radius:15px !important;
+  }
+
+  .section-title{
+    margin-bottom:14px;
+  }
+
+}
+
+/* REDUCE MOTION */
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+
+}

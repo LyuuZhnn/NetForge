@@ -2392,3 +2392,765 @@ window.addEventListener("load", function(){
   }
 
 });
+
+/* =========================================================
+   NETFORGE PROFESSIONAL STABILITY PATCH
+   ========================================================= */
+
+/* ----- AUTH / LOGIN CONSISTENCY ----- */
+
+window.logoutNetForge = function(){
+
+  [
+    "netforge_username",
+    "netforge_kelas",
+    "netforge_role",
+    "netforge_user"
+  ].forEach(key => localStorage.removeItem(key));
+
+  window.location.href = "login.html";
+
+};
+
+window.logout = window.logoutNetForge;
+
+window.loginNetForge = function(){
+
+  const input = document.getElementById("username");
+
+  if(!input) return;
+
+  const name = input.value.trim();
+
+  if(name === ""){
+    alert("Masukkan nama!");
+    return;
+  }
+
+  localStorage.setItem("netforge_username", name);
+
+  const modal = document.getElementById("loginModal");
+
+  if(modal){
+    modal.style.display = "none";
+  }
+
+  window.updateProfile();
+  window.showUser();
+
+};
+
+window.showUser = function(){
+
+  const user =
+    localStorage.getItem("netforge_username") ||
+    localStorage.getItem("netforge_user") ||
+    "";
+
+  const modal =
+    document.getElementById("loginModal");
+
+  const welcome =
+    document.getElementById("welcomeUser");
+
+  if(user){
+
+    if(modal){
+      modal.style.display = "none";
+    }
+
+    if(welcome){
+      welcome.innerHTML =
+        "👋 Welcome, <b>" +
+        user +
+        "</b>";
+    }
+
+  }else{
+
+    if(modal){
+      modal.style.display = "flex";
+    }
+
+  }
+
+};
+
+window.updateProfile = function(){
+
+  const user =
+    localStorage.getItem("netforge_username") ||
+    localStorage.getItem("netforge_user") ||
+    "User";
+
+  const topbarUser =
+    document.getElementById("topbarUser");
+
+  const profileName =
+    document.getElementById("profileName");
+
+  const profileUser =
+    document.getElementById("profileUserName");
+
+  if(topbarUser){
+    topbarUser.textContent = user;
+  }
+
+  if(profileName){
+    profileName.textContent = user;
+  }
+
+  if(profileUser){
+    profileUser.textContent = user;
+  }
+
+};
+
+/* ----- THEME CONSISTENCY ----- */
+
+window.toggleTheme = function(){
+
+  document.body.classList.toggle("light");
+
+  localStorage.setItem(
+    "netforge_theme",
+    document.body.classList.contains("light")
+      ? "light"
+      : "dark"
+  );
+
+};
+
+window.addEventListener("load", () => {
+
+  if(
+    localStorage.getItem("netforge_theme") === "light" ||
+    localStorage.getItem("theme") === "light"
+  ){
+    document.body.classList.add("light");
+  }
+
+});
+
+/* ----- DNS PRO FIX ----- */
+
+window.dnsLookupPro = function(){
+
+  const domainInput =
+    document.getElementById("dnsDomain");
+
+  const result =
+    document.getElementById("dnsResultPro");
+
+  if(!domainInput || !result) return;
+
+  const domain =
+    domainInput.value.trim();
+
+  if(domain === ""){
+    result.innerHTML =
+      "Masukkan nama domain.";
+    return;
+  }
+
+  result.innerHTML = `
+    <b>Mode</b> : Simulation<br>
+    <b>Domain</b> : ${domain}<br>
+    <b>A Record</b> : 192.168.${rand(1,254)}.${rand(1,254)}<br>
+    <b>MX Record</b> : mail.${domain}<br>
+    <b>NS1</b> : ns1.${domain}<br>
+    <b>NS2</b> : ns2.${domain}<br>
+    <b>TTL</b> : 3600 Seconds
+  `;
+
+};
+
+/* ----- SUBNET VALIDATION ----- */
+
+window.calculateSubnet = function(){
+
+  const ipInput =
+    document.getElementById("ipInput");
+
+  const prefixInput =
+    document.getElementById("prefixInput");
+
+  const result =
+    document.getElementById("subnetResult");
+
+  if(!ipInput || !prefixInput || !result) return;
+
+  const ip =
+    ipInput.value.trim();
+
+  const prefix =
+    Number(prefixInput.value);
+
+  const octets =
+    ip.split(".").map(Number);
+
+  const validIP =
+    octets.length === 4 &&
+    octets.every(
+      n => Number.isInteger(n) && n >= 0 && n <= 255
+    );
+
+  if(!validIP || !Number.isInteger(prefix) ||
+     prefix < 0 || prefix > 32){
+
+    result.innerHTML =
+      "❌ IPv4 atau prefix tidak valid.";
+
+    return;
+
+  }
+
+  const ipNum =
+    (
+      ((octets[0] << 24) >>> 0) +
+      (octets[1] << 16) +
+      (octets[2] << 8) +
+      octets[3]
+    ) >>> 0;
+
+  const mask =
+    prefix === 0
+      ? 0
+      : (0xffffffff << (32 - prefix)) >>> 0;
+
+  const network =
+    (ipNum & mask) >>> 0;
+
+  const broadcast =
+    (network | (~mask >>> 0)) >>> 0;
+
+  const toIP = num =>
+    [
+      (num >>> 24) & 255,
+      (num >>> 16) & 255,
+      (num >>> 8) & 255,
+      num & 255
+    ].join(".");
+
+  const total =
+    2 ** (32 - prefix);
+
+  const usable =
+    prefix >= 31
+      ? prefix === 31 ? 2 : 1
+      : Math.max(0,total - 2);
+
+  result.innerHTML =
+    "Network ID : " + toIP(network) +
+    "<br>Broadcast : " + toIP(broadcast) +
+    "<br>First Host : " +
+    (prefix >= 31 ? "-" : toIP((network + 1) >>> 0)) +
+    "<br>Last Host : " +
+    (prefix >= 31 ? "-" : toIP((broadcast - 1) >>> 0)) +
+    "<br>Total Address : " + total +
+    "<br>Usable Host : " + usable;
+
+};
+
+/* ----- WILDCARD VALIDATION ----- */
+
+window.calculateWildcard = function(){
+
+  const input =
+    document.getElementById("wildcardInput");
+
+  const result =
+    document.getElementById("wildcardResult");
+
+  if(!input || !result) return;
+
+  const parts =
+    input.value.trim().split(".").map(Number);
+
+  if(
+    parts.length !== 4 ||
+    !parts.every(
+      n => Number.isInteger(n) &&
+           n >= 0 &&
+           n <= 255
+    )
+  ){
+
+    result.innerHTML =
+      "❌ Subnet mask tidak valid.";
+
+    return;
+
+  }
+
+  result.innerHTML =
+    parts.map(n => 255 - n).join(".");
+
+};
+
+/* ----- IP CLASS VALIDATION ----- */
+
+window.checkIPClass = function(){
+
+  const input =
+    document.getElementById("classInput");
+
+  const result =
+    document.getElementById("classResult");
+
+  if(!input || !result) return;
+
+  const ip =
+    input.value.trim();
+
+  const parts =
+    ip.split(".").map(Number);
+
+  const valid =
+    parts.length === 4 &&
+    parts.every(
+      n => Number.isInteger(n) &&
+           n >= 0 &&
+           n <= 255
+    );
+
+  if(!valid){
+
+    result.innerHTML =
+      "❌ IPv4 tidak valid.";
+
+    return;
+
+  }
+
+  const first = parts[0];
+
+  if(first === 0){
+    result.innerHTML =
+      "Reserved / Unspecified";
+  }
+  else if(first === 127){
+    result.innerHTML =
+      "Loopback";
+  }
+  else if(first <= 126){
+    result.innerHTML =
+      "Class A";
+  }
+  else if(first <= 191){
+    result.innerHTML =
+      "Class B";
+  }
+  else if(first <= 223){
+    result.innerHTML =
+      "Class C";
+  }
+  else if(first <= 239){
+    result.innerHTML =
+      "Class D (Multicast)";
+  }
+  else{
+    result.innerHTML =
+      "Class E (Reserved)";
+  }
+
+};
+
+/* ----- IPV6 VALIDATION / NORMALIZATION ----- */
+
+function normalizeIPv6(input){
+
+  const parts =
+    input.trim().split("/");
+
+  const address = parts[0];
+
+  const prefix =
+    parts.length > 1
+      ? Number(parts[1])
+      : 64;
+
+  if(
+    !Number.isInteger(prefix) ||
+    prefix < 0 ||
+    prefix > 128
+  ){
+    return null;
+  }
+
+  if((address.match(/::/g) || []).length > 1){
+    return null;
+  }
+
+  const sections =
+    address.split("::");
+
+  let groups = [];
+
+  if(sections.length === 2){
+
+    const left =
+      sections[0] ? sections[0].split(":") : [];
+
+    const right =
+      sections[1] ? sections[1].split(":") : [];
+
+    if(left.length + right.length >= 8){
+      return null;
+    }
+
+    const missing =
+      8 - left.length - right.length;
+
+    groups =
+      left.concat(
+        Array(missing).fill("0"),
+        right
+      );
+
+  }else{
+
+    groups =
+      address.split(":");
+
+    if(groups.length !== 8){
+      return null;
+    }
+
+  }
+
+  if(
+    groups.length !== 8 ||
+    !groups.every(
+      group =>
+        /^[0-9a-fA-F]{1,4}$/.test(group)
+    )
+  ){
+
+    return null;
+
+  }
+
+  const normalized =
+    groups
+      .map(group =>
+        parseInt(group,16)
+          .toString(16)
+          .padStart(4,"0")
+      )
+      .join(":");
+
+  return {
+    address: normalized,
+    prefix
+  };
+
+}
+
+window.calculateIPv6 = function(){
+
+  const input =
+    document.getElementById("ipv6Input");
+
+  const result =
+    document.getElementById("ipv6Result");
+
+  if(!input || !result) return;
+
+  const data =
+    normalizeIPv6(input.value);
+
+  if(!data){
+
+    result.innerHTML =
+      "❌ IPv6 tidak valid.";
+
+    return;
+
+  }
+
+  result.innerHTML =
+    "<b>IPv6</b> : " + data.address +
+    "<br><b>Prefix</b> : /" + data.prefix +
+    "<br><b>Status</b> : ✅ Valid";
+
+};
+
+/* ----- VLSM INPUT VALIDATION ----- */
+
+window.calculateVLSM = function(){
+
+  const networkInput =
+    document.getElementById("vlsmNetwork");
+
+  const hostInput =
+    document.getElementById("vlsmHost");
+
+  const result =
+    document.getElementById("vlsmResult");
+
+  if(!networkInput || !hostInput || !result) return;
+
+  const network =
+    networkInput.value.trim();
+
+  const host =
+    Number(hostInput.value);
+
+  const parts =
+    network.split("/");
+
+  const ipParts =
+    parts[0]
+      .split(".")
+      .map(Number);
+
+  const prefix =
+    Number(parts[1]);
+
+  const validNetwork =
+    ipParts.length === 4 &&
+    ipParts.every(
+      n => Number.isInteger(n) &&
+           n >= 0 &&
+           n <= 255
+    ) &&
+    Number.isInteger(prefix) &&
+    prefix >= 0 &&
+    prefix <= 32;
+
+  if(
+    !validNetwork ||
+    !Number.isInteger(host) ||
+    host < 1
+  ){
+
+    result.innerHTML =
+      "❌ Network atau jumlah host tidak valid.";
+
+    return;
+
+  }
+
+  let bits = 0;
+
+  while(
+    bits <= 30 &&
+    (2 ** bits - 2) < host
+  ){
+    bits++;
+  }
+
+  if(bits > 30){
+
+    result.innerHTML =
+      "❌ Jumlah host terlalu besar.";
+
+    return;
+
+  }
+
+  const requiredPrefix =
+    32 - bits;
+
+  const total =
+    2 ** bits;
+
+  const usable =
+    Math.max(0,total - 2);
+
+  result.innerHTML =
+    "<b>Network</b> : " + network +
+    "<br><b>Host Dibutuhkan</b> : " + host +
+    "<br><b>Required Prefix</b> : /" + requiredPrefix +
+    "<br><b>Total Address</b> : " + total +
+    "<br><b>Usable Host</b> : " + usable;
+
+};
+
+/* ----- TOPOLOGY STABILITY ----- */
+
+window.clearTopology = function(){
+
+  devices = [];
+  connections = [];
+  firstDevice = null;
+  selectedDevice = null;
+
+  drawInteractive();
+
+};
+
+window.loadTopology = function(){
+
+  try{
+
+    const d =
+      localStorage.getItem("netforge_devices");
+
+    const c =
+      localStorage.getItem("netforge_connections");
+
+    devices =
+      d ? JSON.parse(d) : [];
+
+    connections =
+      c ? JSON.parse(c) : [];
+
+    if(!Array.isArray(devices)){
+      devices = [];
+    }
+
+    if(!Array.isArray(connections)){
+      connections = [];
+    }
+
+    firstDevice = null;
+    selectedDevice = null;
+
+    drawInteractive();
+
+  }catch(error){
+
+    devices = [];
+    connections = [];
+    firstDevice = null;
+    selectedDevice = null;
+
+    drawInteractive();
+
+    console.error(
+      "Topology data rusak:",
+      error
+    );
+
+  }
+
+};
+
+/* ----- PDF EXPORT FIX ----- */
+
+window.exportPDF = async function(){
+
+  if(
+    !window.jspdf ||
+    !window.jspdf.jsPDF
+  ){
+
+    notify(
+      "❌ Library PDF belum tersedia",
+      "error"
+    );
+
+    return;
+
+  }
+
+  const { jsPDF } = window.jspdf;
+
+  const pdf = new jsPDF();
+
+  const getText = id => {
+
+    const el =
+      document.getElementById(id);
+
+    return el
+      ? el.innerText
+      : "-";
+
+  };
+
+  pdf.setFontSize(20);
+  pdf.text("NetForge Report",20,20);
+
+  pdf.setFontSize(12);
+
+  pdf.text(
+    "CPU : " + getText("cpu"),
+    20,
+    40
+  );
+
+  pdf.text(
+    "RAM : " + getText("ram"),
+    20,
+    50
+  );
+
+  pdf.text(
+    "Ping : " + getText("ping"),
+    20,
+    60
+  );
+
+  pdf.text(
+    "Uptime : " + getText("uptime"),
+    20,
+    70
+  );
+
+  pdf.text(
+    "Status : " + getText("serverStatus"),
+    20,
+    80
+  );
+
+  pdf.save("NetForge-Report.pdf");
+
+};
+
+/* ----- REAL BROWSER NETWORK STATUS ----- */
+
+function updateBrowserNetworkStatus(){
+
+  const status =
+    document.querySelector(
+      "#dashboard .network-status strong"
+    );
+
+  const dot =
+    document.querySelector(
+      "#dashboard .network-status .status-dot"
+    );
+
+  if(!status) return;
+
+  if(navigator.onLine){
+
+    status.textContent =
+      "Network Operational";
+
+    if(dot){
+      dot.style.background =
+        "#00f59a";
+    }
+
+  }else{
+
+    status.textContent =
+      "Network Offline";
+
+    if(dot){
+      dot.style.background =
+        "#ff4567";
+    }
+
+  }
+
+}
+
+window.addEventListener(
+  "online",
+  updateBrowserNetworkStatus
+);
+
+window.addEventListener(
+  "offline",
+  updateBrowserNetworkStatus
+);
+
+window.addEventListener(
+  "load",
+  updateBrowserNetworkStatus
+);
